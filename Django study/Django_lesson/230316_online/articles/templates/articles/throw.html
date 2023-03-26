@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>여기는 throw 입니다.</h1>
+
+{% comment %} 제출을 누르니 action에 의해 catch로 이동함 {% endcomment %}
+<form action="{% url 'articles:catch' %}" method='GET'>
+    {% comment %} 라벨의 for와 input의 id가 같아야함 {% endcomment %}
+    <label for="message">보내고 싶은 데이터 적기</label>
+    <input type="text" id="message" name="message">
+    {% comment %} input submit은 제출할 수 있는 형태가 생김 {% endcomment %}
+    <input type="submit">
+</form>
+{% endblock content %}

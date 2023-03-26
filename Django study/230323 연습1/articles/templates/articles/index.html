@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>게시글 목록 페이지</h1>
+<hr>
+<h2>게시판</h2>
+<hr>
+{% for article in articles %}
+    {{forloop.counter}} : <a href="{% url 'articles:detail' pk=article.pk %}">
+    {{article.title}}</a>
+    <hr>
+{% endfor %}
+<form action="{% url 'articles:create' %}">
+    <input type="submit" value='게시글 작성하기'>
+</form>
+{% endblock content %}

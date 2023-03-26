@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .left-img{
+       float: left; 
+      }
+      .right-img{
+       float: right; 
+      }
+      .blackbackground{
+       background-color: black;
+      }
+      .heighthead{
+        height: 50px;
+      }
+      .center-img{
+        text-align: center;
+      }
+      .image-box{
+        width: 550px;
+        height: 400px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .image-thumbnail{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .image-middle{
+        vertical-align: middle;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- block 요소들  -->
+    <!-- div, h1~6, ul, ol, li, p, hr, form, sematic tags 등 -->
+
+    
+    <div class="blackbackground">
+      <img src="ssafy_logo.png" alt="ssafy_logo" class="blackbackground heighthead">
+      <img src="hamburger_btn.png" alt="hamburger_btn" class="right-img blackbackground heighthead">
+    </div>
+    <div class="center-img image-box"><img src="ssafy_banner.png" alt="ssafy_banner"></div>
+    <p>삼성청년 SW아카데미</p>
+    <p><strong>대한민국 SW의 미래를</strong> 이끕니다.</p>
+    <h4>삼성의 SW 교육 경험과 고용노동부의 취업 지원 노하우를 바탕으로, 
+      취업 준비생에게 SW 역량 향상 교육 및 다양한 취업지원 서비스를 제공하여 취업에 성공하도록 돕는 프로그램입니다.</h4>
+    <p>본 교육 과정은 삼성이 주관하고 고용노동부가 후원하며, 아이들과 미래재단이 함께합니다.</p>
+    <p>(교육운영은 멀티캠퍼스에서 위탁 실시)</p>
+    <span class="center-img">
+      <p>
+        주관 <a href="https://www.multicampus.com/main"><img src="multicampus_logo.png" alt="multicampus_logo" class="heighthead image-middle"></a>
+        후원 <a href="https://www.moel.go.kr"><img src="mob_logo_moel.png" alt="mob_logo_moel" class="heighthead image-middle"></a>
+        <br>
+      </p>
+    </span>
+    <div class="center-img">
+      <img src="happling.png" alt="happling" class="heighthead image-thumbnail">
+      <p><strong>최고의 교육</strong></p>
+      <hr style="background-color: skyblue; height: 5px;">
+      <img src="happlossom.png" alt="happlossom" class="heighthead image-thumbnail">
+      <p><strong>맞춤형 교육</strong></p>
+      <hr style="background-color: skyblue; height: 5px;">
+      <img src="happlower.png" alt="happlower" class="heighthead image-thumbnail">
+      <p><strong>자기주도적 학습</strong></p>
+      <hr style="background-color: skyblue; height: 5px;">
+    </div>

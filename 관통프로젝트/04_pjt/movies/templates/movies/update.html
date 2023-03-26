@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>UPDATE</h1>
+<hr>
+<form action="{% url 'movies:update' pk=movie.pk%}" method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit", value='수정완료'>
+</form>
+<hr>
+<form action="{% url 'movies:index' %}">
+    <input type="submit" value='목록으로 가기'>
+</form>
+<form action="{% url 'movies:detail' pk=movie.pk %}">
+    <input type="submit" value='내용보러 가기'>
+</form>
+{% endblock content %}

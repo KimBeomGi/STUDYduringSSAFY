@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content1 %}
+<p>여기는 Artticles의 throw입니다.</p>
+{% endblock content1 %}
+{% block content2 %}
+
+<form action="{% url 'articles:catch' %}" method = 'GET'>
+    <label for="message">작성할 내용을 작성하고 출바알!!</label>
+    <input type="text" id = 'message' name ='message'>
+    <input type="submit", value = '출바알!'>
+</form>
+<form action="">
+    
+</form>
+{% endblock content2 %}

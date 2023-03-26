@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <!-- /article/throwpage/ 요청을 받으면 출력할 페이지-->
+    {% comment %} 사용자에게 입력받아서 서버로 전달하는 페이지 {% endcomment %}
+    <h1>Throw</h1>
+    {% comment %} 사용자에게 입력을 받을 때는, form요소를 사용 {% endcomment %}
+    <div>
+    {% comment %} 입력받는 요소는 input, 형태에 따라서 type속성이 달라짐 {% endcomment %}
+        <form action="{% url 'articles:catch' %}" method="POST"> <!-- action에 입력하는게 데이터를 전달하려는 서버 url -->
+            {% csrf_token %}
+            {% comment %} 내가 문자열 입력받겠다 하면 input type="text" {% endcomment %}
+            <input type="text" name='message'><br>
+            <input type="checkbox" value='abc' name='check'>
+            <input type="submit" value="던져!"> {% comment %} 입력받은 데이터를 서버로 전송하는 버튼(submit 이벤트 발생)  {% endcomment %}
+        </form>
+
+    </div>
+</body>
+</html>

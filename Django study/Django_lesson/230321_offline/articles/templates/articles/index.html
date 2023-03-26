@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'articles:create' %}">새 글쓰기</a>
+<h1>INDEX</h1>
+<!-- 게시글 목록 출력하기 -->
+{% comment %} {{ articles }} {% endcomment %}
+<h3>제목</h3>
+<hr>
+{% for a in articles %}
+  <a href="{% url 'articles:detail' a.pk %}">{{ a.title }}</a>
+  <hr>
+{% endfor %}
+
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>수정화면 입니다!</h1>
+<form action="{% url 'articles:update' article.pk %}" method='POST'>
+    {% csrf_token %}
+    <p>
+    <!--name 속성은 서버로 전달할 때 쓴다 잘 기억해둘 것.-->
+        <label for="title">제목 : </label>
+        <input type="text" id='title' name='title' value="{{ article.title }}">
+    </p>
+    <p>
+        <!--긴 텍스트를 입력받을 때 사용하는 요소-->
+        <label for="content">내용 : </label>
+        <textarea name="content" id="content" cols="30" rows="10">{{ article.content }}</textarea>
+    </p>
+    <p>
+        <input type="submit" value='작성하기'>
+    </p>
+</form>
+
+{% endblock content %}

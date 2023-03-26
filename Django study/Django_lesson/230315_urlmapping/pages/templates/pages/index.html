@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>반갑습니다. 저는 pages index입니다.</h1>
+    <a href="{% url 'articles:index' %}">Article index로 이동</a>
+    <a href="{% url 'articles:hello1' 'aaa' %}">Article hello1으로 이동</a>
+    <a href="{% url 'articles:hello2' '5779' %}">Article hello2로 이동</a>
+{% endblock content %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>연습중!!!</h1>
+    {% if user.is_authenticated %}
+        <h3>{{user}}님 안녕하세요</h3>
+        <h3>모든 일이 다 잘 될거에요!!!</h3>
+        <form action="{% url 'accounts:logout' %}" method='POST'>
+            {% csrf_token %}
+            <input type="submit" value='로그아웃'>
+        </form>
+    {% else %}
+        <h3>모든일이 다 잘 되야죠!!! 화이팅!</h3>
+        <form action="{% url 'accounts:login' %}">
+            <input type="submit" value='로그인'>
+        </form>
+    {% endif %}
+    <hr>
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>

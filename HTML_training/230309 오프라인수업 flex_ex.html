@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      background-color: burlywood;
+      display: flex;
+      /* flex-direction을 column으로 하면 세로로 쌓아진다. */
+      /* row로 하면 가로로 되는데 자동으로 컨텐츠의 크기만큼만 차지한다. */
+      flex-direction: row;/* 작성하지 않으면 기본이 rows */
+      /* justify-content: 메인축 */
+      /* align-content: 교차축 */
+      justify-content: flex-end;
+      /* align-content: space-evenly; */
+      align-items: center;
+      width: 400px;
+      height: 400px;
+      flex-wrap: wrap;
+    }
+    .box{
+      background-color: palevioletred;
+      border: 1px solid black;
+      /* float:left; */
+      width: 50px;
+      height: 50px;
+      
+      box-sizing: border-box; /* 이러면 border 포함 크기가 박스 사이즈. */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <div class="box">box4</div>
+    <div class="box">box5</div>
+    <div class="box">box6</div>
+    <div class="box">box7</div>
+    <div class="box">box8</div>
+    <div class="box">box9</div>
+    <div class="box">box10</div>
+    <div class="box">box11</div>
+    <div class="box">box12</div>
+    <div class="box">box13</div>
+  </div>
+</body>
+</html>

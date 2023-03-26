@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
+    .big-box{
+      height: 100px;
+      width: 200px;
+      border: 1px solid black;
+    }
+    .bg-red{
+      background-color: red;
+    }
+    .bg-blue{
+      background-color: blue;
+    }
+    .bg-green{
+      background-color: green;
+    }
+    .position-rel{
+      position: relative;
+    }
+    .position-abs{
+      /* static일때 위치 잡는 */
+      /* static이 아닌 조상요소의 좌측상단으로 붙음 */
+      position: absolute;
+    }
+    .position-fixed{
+      position: fixed;
+    }
+    .position-sticky{
+      position: sticky;
+    }
+    /* 위에서 20px만큼 아래로 이동 */
+    .top-20{
+      top: 20px;
+    }
+    /* 왼쪽기준 20px 이동 */
+    .left-20{
+      left: 20px;
+    }
+    /* 바닥에서 20px만큼 위로 이동 */
+    .bottom-20{
+      bottom: 20px;
+    }
+    /* 오른쪽기준 20px 이동 */
+    .right-20{
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="position-sticky top-20">
+    <div class="big-box bg-red position-abs">box1</div>
+    <div class="big-box bg-green position-abs top-20">box3</div>
+  </div>
+  <div class="box bg-blue position-rel">box2</div>
+  <span class="bg-red position-fixed right-20 bottom-20">inline1</span>
+  <span class="bg-red position-rel top-20 left-20">inline2</span>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, libero sed totam adipisci odio, minima fuga eos eius, praesentium itaque cum consequatur accusantium nemo accusamus? Esse laborum facilis ducimus repellat?
+  Aliquid impedit soluta reiciendis. Deleniti labore quis debitis animi, maiores placeat harum soluta est ea similique saepe asperiores voluptatibus laudantium doloribus repellat sequi! Consectetur odit repudiandae dolores at hic eius.
+  Amet hic maiores fuga non, expedita aut vel consectetur beatae debitis ab deserunt accusantium inventore! Ipsa aliquid unde incidunt modi voluptatum facere minus voluptate maiores obcaecati, provident officiis rerum optio.
+  Iure dolores possimus facilis pariatur maiores aperiam asperiores dolor placeat ad cupiditate nam distinctio, neque provident assumenda magni hic! Fugiat, facilis. Corporis, vero! Nobis cumque blanditiis vel, pariatur quisquam totam!
+  Cum voluptates explicabo eaque praesentium iusto minus mollitia officiis nihil, laboriosam sed dolorum necessitatibus fugit nesciunt veritatis amet rerum dolore voluptate asperiores vitae blanditiis. Natus consectetur facilis minima possimus dolor?
+  Earum voluptate mollitia accusantium dolore odio reiciendis veritatis amet corrupti natus debitis nihil, corporis ipsa excepturi. Similique, vitae tempora. Repellat cumque praesentium deserunt labore consequuntur accusamus cum fugiat tempora nobis!
+  Quam laborum nihil quo autem ipsam. Quam ad eaque magnam aspernatur labore quis minima doloribus error velit cumque, sapiente voluptates non. Veritatis exercitationem nobis, laboriosam ea voluptatibus provident quam harum.
+  Quae, nemo modi! Reprehenderit obcaecati aspernatur quo nulla inventore voluptas omnis molestias soluta voluptatem aliquid non velit ab quis repellendus temporibus ut quia nisi, ipsam consectetur! Consectetur quia maiores eum.
+  Veniam aspernatur non minima fugit et, provident quae voluptatem modi officia nulla vero alias doloremque possimus architecto ea? Et minima in aut sequi optio provident laudantium asperiores error exercitationem consequuntur?
+  Inventore saepe adipisci, rerum, dignissimos incidunt quisquam aliquam quibusdam doloremque atque soluta minima vel ratione quam vitae laborum. Saepe molestiae maxime porro eveniet dolores voluptatem expedita dolore suscipit rerum cum.</p>
+  
+</body>
+</html>

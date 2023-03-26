@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 500px;
+            width: 450px;
+            /* border: 1px black solid;
+            box-sizing: border-box;    */
+        }
+        .top1{
+            height: 50px;
+            background-color: red;
+            display: flex;
+            align-items: center;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .top2{
+            height: 70px;
+            border-bottom: 1px solid gray;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;;
+        }
+        .main{
+            height: 380px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: flex-end;
+        }
+        .main-sub{
+            height:360px;
+            width: 100%;
+            border: 1px solid gray;
+            box-sizing: border-box;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-sign{
+            height:20%;
+            border-bottom: 2px solid blue;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .main-input{
+            height: 50%;
+            width: 90%;
+            align-self: center;
+            /* display: flex;
+            flex-direction: column; */
+            /* border: 1px dashed midnightblue;
+            box-sizing: border-box; */
+        }
+        .main-check{
+            height: 30%;
+            width: 90%;
+            align-self: center;
+            /* border: 1px dashed aqua;
+            box-sizing: border-box; */
+        }
+        .main-checktop{
+            height: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-check-right{
+            color: rgb(42, 130, 245);
+        }
+        .main-checkbottom{
+            height: 30%;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: green;
+        }
+        .input-box{
+            height: 30px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .fontbold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Invalid Login or password -->
+        <div class="top1">
+            <div style="padding-left: 15px;">Invalid Login or password</div>
+        </div>
+        <!-- SSAFY 전용 Gitlab 시스템 -->
+        <div class="top2">
+            <div>SSAFY 전용 Gitlab 시스템</div>
+        </div>
+        <!-- sign in 구역 -->
+        <div class="main">
+            <div class="main-sub">
+                <div class="main-sign">
+                    <p>Sign in</p>
+                </div>
+                <div class="main-input">
+                    <div class="main-input1 fontbold">
+                        <P>Username or Email</P>
+                        <div class="input-box"></div>
+                    </div>
+                    <div class="main-input1 fontbold">
+                        <P>Password</P>
+                        <div class="input-box"></div>
+                    </div>
+                </div>
+                <div class="main-check">
+                    <div class="main-checktop">
+                        <div class="main-check-left">
+                            <input type="checkbox" name="temp" value="normal" id="normal">
+                            <label for="normal">Remeber me</label>
+                        </div>
+                        <div class="main-check-right">
+                            <div">Forgot your password?</div>
+                        </div>
+                    
+                    <div class="main-checkbottom">
+                        <div class="sign-in-box">Sign in</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="main-signin">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>DETAIL</h1>
+<hr>
+{{movie.title}}
+<p>Audience : {{movie.audience}}</p>
+<p>Release Dates : {{movie.release_date}}</p>
+<p>Genre : {{movie.genre}}</p>
+<p>Score : {{movie.score}}</p>
+<p>Poster URL : {{movie.poster_url}}</p>
+<p>Actor : </p>
+{% if movie.actor_image %}<img src="{{movie.actor_image.url}}"  alt="{{movie.actor_image}}" >{% endif %}
+<p>{{movie.description}}</p>
+
+
+<form action="{% url 'movies:index' %}">
+    <input type="submit" value='목록보기'>
+</form>
+<form action="{% url 'movies:update' pk=movie.pk %}">
+    <input type="submit" value='수정하기'>
+</form>
+<form action="{% url 'movies:delete' pk=movie.pk %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value='삭제하기'>
+</form>
+{% endblock content %}

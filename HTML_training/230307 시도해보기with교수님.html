@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <img src="도구리.jpg" alt="main img" width="200">
+    <h1>SSAFY 학생 건강설문</h1>
+  </header>
+  <section>
+    <form action="">
+      <label for="name-input">이름을 기재해주세요</label><br>
+      <input type="text" id="name-input" name="">
+      <hr>
+      <label for="region">지역을 선택해주세요</label><br>
+      <select name="" id="region" required> <!--required는 필수요소임을 나타냄-->
+        <option value="서울">서울</option>
+        <option value="대전">대전</option>
+        <option value="광주">광주</option>
+        <option value="구미" selected>구미</option> <!--초깃값을 설정하고 싶으면 selected를 설정-->
+        <option value="부울경">부울경</option>
+      </select>
+      <hr>
+      <label for="region">오늘의 체온을 선택해주세요</label><br>
+      <input type="radio" name="temp" value="normal" id="normal">
+      <label for="normal">37도 미만</label>
+      <input type="radio" name="temp" value="warning" id="warning">
+      <label for="warning">37도 이상</label>
+      <hr>
+      <input type="submit" value="제출">
+    </form>
+  </section>
+  <footer>
+    Google 설문지를 통해 비밀번호를 제출하지 마시오.
+  </footer>
+
+
+</body>
+</html>

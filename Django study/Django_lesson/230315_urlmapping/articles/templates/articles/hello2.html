@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block test %}
+<p>{{ name }} 이건 hello2 되나 안되나?</p>
+{% endblock %}
+{% block content %}
+    <h1>반갑습니다. 저는 ARTICLE index입니다.</h1>
+    {% comment %} href=''에 아무것도 안쓰면.. 현재 경로(url)에서 시작 {% endcomment %}
+    {% comment %} 여기서의 현재 경로는 articles/index/ {% endcomment %}
+    {% comment %} /pages/index/ 이려면 root경로에서 page/index/ 로 가라. {% endcomment %}
+    
+    <a href="{% url 'pages:index' %}">pages index로 이동</a>
+{% endblock content %}

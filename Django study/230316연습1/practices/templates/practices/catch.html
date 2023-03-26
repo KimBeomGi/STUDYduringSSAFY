@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content1 %}
+    <p>여기는 Practices catch입니다.</p>
+    <h1>입력된 내용은 {{ message }}라니까요~~~</h1>
+{% endblock content1 %}
+{% block content2 %}
+    <a href="{% url 'practices:index' %}">practices의 index로 가자.</a>
+    <a href="{% url 'articles:throw' %}">articles의 throw로 돌아가자.</a>
+{% endblock content2 %}

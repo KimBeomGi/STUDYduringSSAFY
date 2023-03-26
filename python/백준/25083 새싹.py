@@ -1,0 +1,7 @@
+print('''         ,r'"7''')
+print('''r`-_   ,'  ,/''')
+print(' \. ". ', end ="L_r'")
+print()
+print('''   `~\/''')
+print('''      |''')
+print('''      |''')

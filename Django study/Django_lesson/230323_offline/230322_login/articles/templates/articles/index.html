@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Index</h1>
+{% for article in articles %}
+  {{forloop.counter}} : <a href="{% url 'articles:detail' pk=article.pk %}">{{ article.title }} </a>
+<hr>
+{% endfor %}
+{% endblock content %}

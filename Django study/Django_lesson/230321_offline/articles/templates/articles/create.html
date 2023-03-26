@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>새 글 작성하기 </h1>
+<!-- 사용자에게 입력받을 수 있는 화면 출력하기 -->
+<!-- 파일 업로드를 위해서는 내용에 파일이 포함되어 있음을 알려준다.-->
+{% comment %} <form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+    <p>
+    <label for="title">제목 : </label>
+    <input type="text" id="title" name="title">
+  </p>
+  <p>
+    <label for="file">파일 : </label>
+    <input type="file" id='file' name='file'>
+  </p>
+  <p>
+    <label for="content">내용 : </label>
+    <!-- 긴 텍스트를 입력받을 때 사용하는 요소 예) 댓글창 여러줄 보이는 요소 -->
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+  </p>
+  <p>
+    <input type="submit" value="작성하기">
+  </p>
+
+</form>
+<hr>
+<hr>   {% endcomment %}
+<form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="작성하기">
+</form>
+{% endblock content %}
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 자손 결합자 */
+    /* 자손 결합자는 직계자손이 아니라도 하위에 있다면 모두 작동하도록 함 */
+    /* 그러니까 여기선 div 태그의 하위 요소인 p태그이기만 하면 작동하게 하는 것 */
+    div p{
+      color: blue;
+    }
+    /* 자식 결합자 */
+    /* 자식 결합자는 직계자손 그러니까 여기선 div 바로 직계 하위의 p일때만 작동하게 하는 것*/
+    div > p {
+      color: crimson
+    }
+    .pad-left{
+      padding-left: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+    <div>
+      <span>
+      <p class="pad-left">손자</p>
+      </span>
+    </div>
+    <p>자식</p>
+  </div>
+</body>
+</html>

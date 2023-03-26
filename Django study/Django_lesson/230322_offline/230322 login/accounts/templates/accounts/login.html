@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>로그인화면</h1>
+    <!--action=""으로 되어있는 이유는 현재보고있는 창을 그대로 보게 하기 위해서 그럼.-->
+    <form action="" method='POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value='로그인'>
+    </form>
+{% endblock content %}

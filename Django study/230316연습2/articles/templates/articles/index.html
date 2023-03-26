@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>여기는 Articles의 index입니다.</h1>
+    <form action="{% url 'articles:throw' %}" method='GET'>
+        <label for="message">여기에 작성하고 싶은 말을 작성하세요~</label>
+        <input type="text" value='어떤 말이든 작성해보세요' id='message' name='message'>
+        <input type="submit" value='미래에 보내기♥'>
+    </form>
+</body>
+</html>

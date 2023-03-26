@@ -1,0 +1,15 @@
+/* 오 container이렇게도 해보네 */
+.container{
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+}
+.box{
+  width: 100px;
+  height: 100px;
+  background-color: orangered;
+  /* 박스를 글과 붙이고 싶을때 */
+  float: left;
+  /* 붙어있는 박스에 여백을 주고 싶을때 */
+  margin-right: 20px;
+}

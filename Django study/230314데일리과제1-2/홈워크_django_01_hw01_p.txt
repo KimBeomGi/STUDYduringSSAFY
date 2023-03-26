@@ -1,0 +1,8 @@
+django프로젝트(my_pjt)
+mkdir my_pjt
+
+앱(my_app)
+python manage.py startapp my_app
+
+서버 실행
+python manange.py runserver
