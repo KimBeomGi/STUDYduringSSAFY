@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>여기는 INDEX</h1>
+<h2>목록을 보도록하자!!!</h2>
+<hr>
+{% for article in articles %}
+    <p>순번 : {{forloop.counter}}</p>
+    <a href="{% url 'articles:detail' pk=article.pk %}">제목 : {{article.title}}</a>
+    <hr>
+{% endfor %}
+
+<form action="{% url 'articles:create' %}">
+    <input type="submit" value='게시글 작성하기'>
+</form>
+
+{% endblock content %}

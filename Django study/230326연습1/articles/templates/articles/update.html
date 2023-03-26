@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>여기는 UPDATE</h1>
+<h2>게시글을 수정하자!!!</h2>
+<hr>
+<form action="{% url 'articles:update' article.pk%}" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value='게시글 수정하기'>
+</form>
+
+<form action="{% url 'articles:index' %}">
+    <input type="submit" value='게시글 목록보기'>
+</form>
+<form action="{% url 'articles:create' %}">
+    <input type="submit" value='게시글 작성하기'>
+</form>
+
+{% endblock content %}
