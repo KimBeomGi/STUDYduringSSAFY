@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>CREATE</h1>
+<hr>
+<form action="{% url 'shops:create' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button>글쓰기</button>
+</form>
+{% endblock content %}

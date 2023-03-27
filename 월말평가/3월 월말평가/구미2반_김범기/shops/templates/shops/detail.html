@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Detail</h1>
+<hr>
+<p>상품명 : {{ item.name }}</p>
+<p>상품 가격 : {{ item.price }}</p>
+<p>상품 설명 : {{ item.detail }}</p>
+<hr>
+<a href="{% url 'shops:update' item.id %}" class="btn btn-warning">수정하기</a>
+<!-- 문제 6. 글 삭제가 되지 않는 부분을 수정하시오. -->
+<form action="{% url 'shops:delete' item.id %}" method="POST" class="d-inline">
+  {% csrf_token %}
+  <button class="btn btn-danger">삭제하기</button>
+</form>
+<hr>
+<a href="{% url 'shops:index' %}">뒤로가기</a>
+
+{% endblock content %}
