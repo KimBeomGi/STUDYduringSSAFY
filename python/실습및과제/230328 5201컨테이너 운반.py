@@ -49,7 +49,7 @@ sys.stdin = open('230328 5201컨테이너 운반.txt','r')
 ######
 # 이거 왜 안됨?
 def sum_weight(truck,container, overall_weight):    # truck 번호, container 번호
-    # global overall_weight                         # global 변수 사용s
+    # global overall_weight                         # global 변수 사용
     if truck == M or container == N:                # truck의 갯수가 다차거나 container번호가 다 차면
         k= overall_weight
         return k                                    # 돌아가
@@ -63,7 +63,7 @@ def sum_weight(truck,container, overall_weight):    # truck 번호, container �
                 return k                            # 돌아가
             elif i==(M-1) and j==(N-1):
                 if truck_load[i] < box_weight[j]:
-                    return 0
+                    return k
     return 0
 T = int(input())
 for testcase in range(1, T+1):
@@ -75,8 +75,33 @@ for testcase in range(1, T+1):
     print(f'#{testcase} {answer}')                  # 출력값 출력
 
 # 아래게 안되는거여
-3 5
-20 20 15
-20 10 10 5 1
+# 1
+# 3 5
+# 20 20 15
+# 20 10 10 5 1
 
 # 출력값은 20
+
+# 5
+# 3 2
+# 1 5 3
+# 8 3
+# 5 10
+# 2 12 13 11 18
+# 17 4 7 20 3 9 7 9 20 5
+# 10 12
+# 10 13 14 6 19 11 5 20 11 14
+# 5 18 17 8 9 17 18 4 1 16 15 13
+# 3 5
+# 20 20 15
+# 20 10 10 5 1
+# 2 2
+# 30 27
+# 1 2
+
+
+# #1 8
+# #2 45
+# #3 84
+# #4 20
+# #5 0
