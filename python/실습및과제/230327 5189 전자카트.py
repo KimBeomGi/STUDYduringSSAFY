@@ -37,6 +37,8 @@ sys.stdin = open('230327 5189 전자카트.txt')
 # 해설을 보니 행의 값이 출발지고, 열의 값이 도착지이므로 배터리 사용량 보는 법은 2번방에서 1번 방이면 [2][1]이다.
 # 각 방은 연결되어야하므로 내가 2번 방이면 [2][?]의 경로가 내가 갈 수 있는 경로이다.
 
+#####
+# 이것도 되고
 # def battery_quantity(count, start, sum_value):
 #     global min_value
 #     if count == N:                                                  # 
@@ -61,7 +63,37 @@ sys.stdin = open('230327 5189 전자카트.txt')
 #     used = [0]*N
 #     min_value = 2**55
 #     A = battery_quantity(1,0,0)
-#     print(f'#{testcase} {A}')
+#     print(f'#{testcase} {min_value}')
+
+
+###################################
+# 이것도 되고
+def battary(start, visited, battery):                               # 함수 생성
+    global min_battery                                              # 글로벌로 min_battery를 생성
+    
+    if all(visited):                                                # 모든 구역을 방문한 경우
+        battery += matrix[start][0]                                 # 사무실로 돌아가는 배터리 사용량 추가
+        if battery < min_battery:                                   # battery 값이 min_battery값보다 작다면
+            min_battery = battery                                   # 값 바꾸기
+        return
+    
+    for arrival in range(1, N):                                     # 도착지점은 어딜까?
+        if not visited[arrival]:                                    # 방문안해봤으면
+            visited[arrival] = 1                                    # 방문표시하고
+            battary(arrival, visited, battery + matrix[start][arrival])     # 방문하기
+            visited[arrival] = 0                                    # 방문 끝. 다시 미방문 표시
+            
+T = int(input())
+for test_case in range(1, T+1):                                     # 테스트케이스 만큼 반복
+    N = int(input())                                                # N 입력받기
+    matrix = [list(map(int, input().split())) for _ in range(N)]    # 행렬생성
+    min_battery = 2**55                                             # 최소 배터리 사용량 초기화
+    visited = [0] * N                                               # visited 생성
+    visited[0] = 1                                                  # 출발하는 곳은 1로 만들어주기
+    battary(0, visited, 0)                                          # 함수에 대입
+    print(f"#{test_case} {min_battery}")                            # 출력!
+
+
 
 ####################
 # def permutation(arr, depth, n, r, visited, result):
@@ -99,28 +131,3 @@ sys.stdin = open('230327 5189 전자카트.txt')
 #     # 결과 출력
 #     print(f"#{t} {min_battery}")
 #######################
-
-def battary(start, visited, battery):                               # 함수 생성
-    global min_battery                                              # 글로벌로 min_battery를 생성
-    
-    if all(visited):                                                # 모든 구역을 방문한 경우
-        battery += matrix[start][0]                                 # 사무실로 돌아가는 배터리 사용량 추가
-        if battery < min_battery:                                   # battery 값이 min_battery값보다 작다면
-            min_battery = battery                                   # 값 바꾸기
-        return
-    
-    for arrival in range(1, N):                                     # 도착지점은 어딜까?
-        if not visited[arrival]:                                    # 방문안해봤으면
-            visited[arrival] = 1                                    # 방문표시하고
-            battary(arrival, visited, battery + matrix[start][arrival])     # 방문하기
-            visited[arrival] = 0                                    # 방문 끝. 다시 미방문 표시
-            
-T = int(input())
-for test_case in range(1, T+1):                                     # 테스트케이스 만큼 반복
-    N = int(input())                                                # N 입력받기
-    matrix = [list(map(int, input().split())) for _ in range(N)]    # 행렬생성
-    min_battery = 2**55                                             # 최소 배터리 사용량 초기화
-    visited = [0] * N                                               # visited 생성
-    visited[0] = 1                                                  # 출발하는 곳은 1로 만들어주기
-    battary(0, visited, 0)                                          # 함수에 대입
-    print(f"#{test_case} {min_battery}")                            # 출력!
