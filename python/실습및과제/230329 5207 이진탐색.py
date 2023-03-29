@@ -19,42 +19,32 @@ sys.stdin = open('230329 5207 이진탐색.txt','r')
 #         if end >= middle+1:
 #             return binary_search(middle+1, end, key)
 #     return k
-
-
-def binary_search(start, end, key):
-    global temp
+def binary_search(array,start, end, key):
+    prev = 0
     while start <= end:
         middle = (start+end)//2
-        if A[middle] == key:
-            return True
+        if array[middle] == key:
+            return 1
         
-        elif A[middle] < key:                   # A[middle]값이 키보다 작으면
+        elif array[middle] < key:                   # A[middle]값이 키보다 작으면
+            if prev == 1:
+                return 0
             start = middle+1
-            temp.append('r')
+            prev = 1
         else:                                   # A[middle]값이 키보다 크면면
+            if prev == 2:
+                return 0
             end = middle-1
-            temp.append('l')
-    return False
+            prev = 2
+    return 0
         
 T = int(input())
 for testcase in range(1, T+1):
     N, M = map(int, input().split())                # 각 리스트 A와 B의 길이
     A = sorted(list(map(int, input().split())))     # B의 인자를 찾을 A 리스트
-    B = list(map(int, input().split()))             # A 리스트에서 key값으로 쓰일 B리스트
+    B = sorted(list(map(int, input().split())))             # A 리스트에서 key값으로 쓰일 B리스트
     count = 0
-    temp = []
     for b in B:                                     # B의 인자를 이용해 반복
-        isit = True
-        answer = binary_search(0, N-1, b)           # answer에 True 또는 False 입력
-        # if answer:                                  # 값이 0이 아니라면
-        #     # isit = True
-        #     if len(temp)>2:
-        #         for i in range(len(temp)-1):
-        #             if temp[i] == temp[i+1]:
-        #                 isit = False
-        if answer and isit:
-            count += 1
+        count += binary_search(A,0, N-1, b)           # answer에 return값 출력
     
     print(f'#{testcase} {count}')
-
-    # print(binary_search(0,N-1,2))

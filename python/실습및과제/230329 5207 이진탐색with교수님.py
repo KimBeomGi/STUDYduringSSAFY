@@ -6,7 +6,7 @@ def binary_search(arr, key, s, e):
     # key가 중간값보다 작으면 앞쪽만 확인
     # 그러다가 s랑 e가 역전되면 못찾은 것.
     prev = 0        # 0은 최초 탐색, 1은 오른쪽 탐색, 2는 왼쪽 탐색
-    while s < e:
+    while s <= e:
         mid = (s+e)//2
         if arr[mid] == key:
             return 1
@@ -33,6 +33,6 @@ for testcase in range(1, T+1):
     # B안의 요소가 A에 포함되는가를 확인
     cnt = 0
     for e in arr_B:
-        cnt += binary_search(arr_A, e, 40, N-1)
+        cnt += binary_search(arr_A, e, 0, N-1)
     
     print(f'#{testcase} {cnt}')
