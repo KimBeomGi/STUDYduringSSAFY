@@ -51,7 +51,7 @@ sys.stdin = open('2230329 5204 병합정렬.txt', 'r')
 #     array = merge_sort(array)                       # 병합정렬 실시!
 #     print(f'#{testcase} {array[N//2]} {count}')
 
-
+#########################################
 
 # 각 왼쪽 오른쪽 나눠진 조각들을 합치는 작업
 # def merge(array, start, middle, end):
