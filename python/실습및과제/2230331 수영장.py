@@ -43,9 +43,31 @@ sys.stdin = open('2230331 수영장.txt','r')
 # 출력해야 할 정답은 이용 계획대로 수영장을 이용하는 경우 중 가장 적게 지출하는 비용이다.
 
 
+def cal(cost, idx):
+    global min_cost
+    if min_cost < cost:
+        return
+
+    if idx >= 13:               # 모든 달에 대한 계산이 완료되었다면
+        if min_cost > cost:     # 최소 금액을 확인하고 현재 알고있는 최소금액이 더 크면
+            min_cost = cost     # 현재 금액을 최소 금액으로 바꿔라
+        return
+
+    # 하루권
+    cal(cost+day*each_month[idx], idx + 1)   # 하루권 비용
+    # 한달권
+    cal(cost+month, idx + 1)
+    # 석달권
+    cal(cost+season, idx + 3)
+    # 연간권
+    cal(cost+year, idx + 12)
+    return
+
 # [문제풀이]
 T = int(input())
 for testcase in range(1, T+1):
     day, month, season, year = map(int,input().split())
     each_month = [0]+list(map(int, input().split()))        # [0]을 추가함으로 각 인덱스가 각 달에 위치함
-    
+    min_cost = 3000*365
+    cal(0, 1)
+    print(f'#{testcase} {min_cost}')
