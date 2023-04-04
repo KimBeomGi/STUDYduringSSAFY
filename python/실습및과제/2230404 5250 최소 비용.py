@@ -76,12 +76,67 @@ sys.stdin = open('2230404 5250 최소 비용.txt')
 
                 
 
-#### dijkstra로 풀어보기
+#### BFS로 풀어보기
 
 
 T = int(input())
 for testcase in range(1, T+1):
     N = int(input())
     matrix = [list(map(int, input().split())) for _ in range(N)]
-    visited = [[0]*N for _ in range(N)]
+    visited = [[0xfffffffffff]*N for _ in range(N)]
     min_cost = 0xffffffffffff
+    Q = []
+    Q.append((0,0))
+    row = 0
+    column = 0
+    visited[0][0] = 0
+    while Q:
+        row = Q[0][0]
+        column = Q[0][1]
+        Q.pop(0)
+        
+        for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
+            if 0 <= row + dr < N and 0 <= column + dc < N :
+                # 다음으로 넘어가는 곳이 더 높으면?
+                if  matrix[row + dr][column + dc] >  matrix[row][column]:
+                    a = matrix[row + dr][column + dc] - matrix[row][column] +1
+                else: a = 1
+
+                value = visited[row][column] + a     # 넣게 될 값은 현재 위치 + a
+                if visited[row+dr][column+dc] > value:
+                    visited[row+dr][column+dc] = value
+                    Q.append((row+dr,column+dc))    
+
+
+    answer = visited[N-1][N-1]
+    print(f'#{testcase} {answer}')
+
+
+# T = int(input())
+# for testcase in range(1, T+1):
+#     N = int(input())
+#     matrix = [list(map(int, input().split())) for _ in range(N)]
+#     visited = [[float('inf')]*N for _ in range(N)]
+#     Q = [(0,0)]
+#     visited[0][0] = 0
+#     dr = [-1,1,0,0]
+#     dc = [0,0,-1,1]
+    
+#     while Q:
+#         row, column = Q.pop(0)
+#         for d in range(4):
+#             nr = row+dr[d]
+#             nc = column +dc[d]
+#             if 0 <= nr < N and 0 <= nc < N :
+#                 # 다음으로 넘어가는 곳이 더 높으면?
+#                 if  matrix[nr][nc] >  matrix[row][column]:
+#                     a = matrix[nr][nc] - matrix[row][column] +1
+#                 else: a = 1
+#                 value = visited[row][column] + a     # 넣게 될 값은 현재 위치 + a
+
+#                 if value < visited[nr][nc]:
+#                     visited[nr][nc] = value
+#                     Q.append((nr, nc))
+
+#     answer = visited[N-1][N-1]
+#     print(f'#{testcase} {answer}')
