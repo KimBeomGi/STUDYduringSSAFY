@@ -21,8 +21,8 @@ class Article(models.Model):
 class Comment(models.Model):
     # related_name을 변경해주면 현재 원래이름은 comment_set인데 변경한 그 네임을 참조하겠다라는 게 된다.
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name = 'comments')
-    # 위에있는 Article참조하겠다. # Comment자체가 Article의 id를 참조하는데, 만약 이 게시글이 삭제되면
-    # 이 것도 삭제할 거임!!!
+    # 위에있는 Article참조하겠다. # Comment자체가 Article의 id를 참조하는데,
+    # 만약 이 게시글이 삭제되면 이 것도 삭제할 거임!!!
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
