@@ -15,5 +15,10 @@
 # 첫째 줄에 만들 수 있는 가장 큰 삼각형의 둘레를 출력한다.
 
 import sys
+# 삼각형의 조건 중 하나는 짧은 2변이 제일 긴 1변보다 커야함.
+a = list(map(int, sys.stdin.readline().strip().split()))
 
-a, b, c = map(int, sys.stdin.readline().strip().split())
+a.sort()
+while a[0] + a[1] <= a[2]: # 짧은 2변의 합이 제일 긴 변 1개 보다 작거나 같으면 삼각형이 안되니까
+    a[2] -= 1              # 제일 긴변을 줄이기.
+print(sum(a))
