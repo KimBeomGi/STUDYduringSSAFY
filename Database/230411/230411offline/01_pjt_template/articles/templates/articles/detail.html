@@ -39,12 +39,17 @@
     <ul>
     {% if comments %}
         {% for comment in comments %}
-            <li>{{ comment.content }}
-                <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
-                    {% csrf_token %}
-                    <input type="submit" value='삭제'>
-                </form>
-            </li>
+                {% if request.user == comment.user %}
+                    <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
+                        {% csrf_token %}
+                        <li> {{ comment.content }}
+                        <input type="submit" value='삭제'>
+                    </form>
+                    </li>
+                {% else %}
+                <li>{{ comment.content }}</li>
+                {% endif %}
+            
         {% endfor %}
     {% else %}
         <p>뽀쓰 우리 됏글이엄서....</p>

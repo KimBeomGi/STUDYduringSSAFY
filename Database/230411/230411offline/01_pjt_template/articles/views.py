@@ -71,7 +71,7 @@ def update(request, pk):
     else:
         return redirect('articles:index')
 
-
+@login_required
 def comment_create(request, article_pk):
     article = Article.objects.get(pk = article_pk)
     # 댓글저장하고, 상세화면으로 넘겨주기
@@ -83,13 +83,15 @@ def comment_create(request, article_pk):
         comment = comment_form.save(commit=False)     # >> DB에 저장
         # commit=False를 하면 데이터베이스에 저장은 안되는데 comment객체는 돌려줌
         comment.article = article
+        comment.user = request.user
         comment.save()
     return redirect('articles:detail', article_pk)
 
 def comment_delete(request, article_pk, comment_pk):
     # 댓글 삭제하고... 게시글 상세화면으로 돌아가기
     comment = Comment.objects.get(pk=comment_pk)
-    comment.delete()
+    if comment.user == request.user:
+        comment.delete()
     return redirect('articles:detail', article_pk)
 
 @login_required
