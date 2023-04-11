@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>DETAIL</h1>
+<hr>
+<p>작성자 : {{ todo.author }}</p>
+<p>할  일 : {{ todo.title }}</p>
+<p>상  태 : {{ todo.completed}}</p>
+<a href="{% url 'todos:index' %}">목록으로</a>
+<form action="{% url 'todos:delete' todo.pk %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value='삭제하기'>
+</form>
+<form action="{% url ''todos:update' todo.pk' %}" method='POST'>
+    {% csrf_token %}
+    {% if todo.completed %}
+    <input type="submit" value='완료-취소'>
+    {% else %}
+    <input type="submit" value='완료'>
+    {% endif %}
+</form>
+{% endblock content %}

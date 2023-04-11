@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create</h1>
+
+<form action="{% url 'todos:create' %}" method='POST'>
+    {% csrf_token %}
+    {% comment %} <p> Title : {{ form.Title }}</p>
+    <p> Completed : {{ form.Completed }}</p> {% endcomment %}
+    {{form.as_p}}
+    <input type="submit" value='create'>
+</form>
+
+{% endblock content %}

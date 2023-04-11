@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Todo</h1>
+<hr>
+
+{% if todos|length == 0 %}
+    <p>작성된 글이 없습니다.</p>
+{% else %}
+    {% for todo in todos %}
+    <ul>
+    <li>{{todo.Title}} - {{todo.id}} 번째 할 일</li>
+    </ul>
+    {% endfor %}    
+{% endif %}
+
+{% endblock content %}

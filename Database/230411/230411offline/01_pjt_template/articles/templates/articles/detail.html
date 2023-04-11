@@ -1,0 +1,72 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <hr />
+
+  {% if article.image %}
+    <img src="{{article.image.url}}" />
+  {% endif %}
+
+  <div id="article-content">
+    <p>글 제목 : {{article.title}}</p>
+    <p>글 내용 : {{article.content}}</p>
+    <p>생성시각 : {{article.created_at}}</p>
+    <p>수정시각 : {{article.updated_at}}</p>
+
+    <hr>
+    <form action="{% url 'articles:likes' article.pk %}" method='POST'>
+        {% csrf_token %}
+        {% if request.user in article.like_users.all %}
+            <input type="submit" value='뽉쓰 이궈 이제 안조아...'>
+        {% else %}
+            <input type="submit" value='뽉쓰 이궈 조타!'>
+        {% endif %}
+        {% comment %} <span>{{ article.like_users.count }}명이 좋아합니다.</span> {% endcomment %}
+        <span>{{ article.like_users.all|length }}명이 좋아합니다.</span>
+    </form>
+    
+    <hr>
+    
+    <form action="{% url 'articles:comment_create' article.pk %}" method='POST'>
+        {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value='댓글 작성'>
+    </form>
+    <p>{{ comments|length}}개의 댓글이 있습니다.</p>
+    <p>뽀쓰 됏그를다라줘!!</p>
+
+    <ul>
+    {% if comments %}
+        {% for comment in comments %}
+                {% if request.user == comment.user %}
+                    <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
+                        {% csrf_token %}
+                        <li> {{ comment.content }}
+                        <input type="submit" value='삭제'>
+                    </form>
+                    </li>
+                {% else %}
+                <li>{{ comment.content }}</li>
+                {% endif %}
+            
+        {% endfor %}
+    {% else %}
+        <p>뽀쓰 우리 됏글이엄서....</p>
+    {% endif %}
+    </ul>
+    
+    <hr>
+    {% if article.user == request.user %}
+        <a href="{% url 'articles:update' article.pk %}">수정하기</a>
+        <form action="{% url 'articles:delete' article.pk %}" id="delete-form">
+        {% csrf_token %}
+        <input type="submit" value="삭제하기" id="delete-btn" />
+        </form><br>
+    {% endif %}
+        <hr>
+        <a href="{% url 'articles:index' %}">목록보기</a>
+    
+</div>
+    
+{% endblock content %}

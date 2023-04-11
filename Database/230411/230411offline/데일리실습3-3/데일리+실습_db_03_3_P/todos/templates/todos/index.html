@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>INDEX</h1>
+<hr>
+<ul>
+    <li>{% for todo in todos %}
+        <a href="{% url 'todos:detail' todo.pk%}">{{todo.author.username}} - {{todo.title}}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock content %}
