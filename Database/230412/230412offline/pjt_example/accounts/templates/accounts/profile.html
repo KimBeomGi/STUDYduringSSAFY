@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ person }}의 profile</h1>
+<form action="{% url 'accounts:follow' person.pk %}" method='POST'>
+    {% csrf_token %}
+    {% comment %} 현재 로그인한 사람이 이 페이지의 주인을 follow/unfollow 하는 것 {% endcomment %}
+    
+    {% if user != person %}
+        {% if user in person.followers.all %}
+            <input type="submit" value='언팔로우'>
+        {% else %}
+            <input type="submit" value='팔로우'>
+        {% endif %}
+    {% endif %}
+</form>
+<p>팔로잉 : {{ person.followings.count}}명</p>
+<ul>
+{% for following  in person.followings.all %}
+    <li>{{ following }} 님을 팔로우 중 입니다. </li>
+{% endfor %}
+</ul>
+<p>팔로워 : {{ person.followers.count}}명</p>
+<ul>
+{% for follower  in person.followers.all %}
+    <li>{{ follower }} 님이 팔로우 중 입니다.</li>
+{% endfor %}
+</ul>
+<p>{{ person }}의 게시글 : </p>
+{% for article in person.articles.all %}
+<ul>
+    <li>
+        {{ article.title }}
+    </li>
+</ul>
+{% endfor %}
+<p>{{ person }}의 댓글 : </p>
+
+<hr>
+<a href="{% url 'articles:index' %}">홈으로</a>
+
+{% endblock content %}
