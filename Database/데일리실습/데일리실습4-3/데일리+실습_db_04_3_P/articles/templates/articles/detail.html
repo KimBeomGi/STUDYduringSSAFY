@@ -18,6 +18,10 @@
   {% endif %}
   <a href="{% url 'articles:index' %}">[back]</a>
   <hr>
+  {% for hashtag in article.hashtags.all %}
+    <a href="{% url 'articles:hashtag' hashtag.pk %}">{{ hashtag.content }}</a> <br>
+  {% endfor %}
+  <hr>
   <h4>댓글 목록</h4>
   {% if comments %}
     <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>

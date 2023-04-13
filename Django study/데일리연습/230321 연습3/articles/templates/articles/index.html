@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>INDEX 페이지</h1>
+<h3>짜잔~!</h3>
+<hr>
+
+{% for a in articles %}
+    <span>제목 : </span>
+    <a href="{% url 'articles:detail' pk=a.pk %}">
+        <span>{{a.title}}</span>
+        <hr>
+    </a>
+{% endfor %}
+<form action="{% url 'articles:create' %}">
+    <input type="submit" value='게시글 작성'>
+</form>
+
+{% endblock content %}

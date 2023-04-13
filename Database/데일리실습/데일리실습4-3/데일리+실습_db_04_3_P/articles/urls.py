@@ -11,4 +11,6 @@ urlpatterns = [
     path('<int:pk>/update/', views.update, name='update'),
     path('<int:pk>/comments/', views.comments_create, name='comments_create'),
     path('<int:article_pk>/comments/<int:comment_pk>/delete/', views.comments_delete, name='comments_delete'),
+    path('<int:hash_pk>/hashtag/', views.hashtag, name='hashtag'),
+    # path('<int:hash_pk>/hashtag2/', views.hashtag, name='hashtag2'),
 ]
