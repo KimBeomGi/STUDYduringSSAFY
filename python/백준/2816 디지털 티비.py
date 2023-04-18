@@ -36,17 +36,50 @@ import sys
 N = int(sys.stdin.readline())
 channels = []
 for i in range(N):
-    channel = sys.stdin.readline()
+    channel = sys.stdin.readline().strip()
     channels.append(channel)
     if channel == 'KBS1':
         POS1 = i                    # KBS1의 위치
     elif channel == 'KBS2':
         POS2 = i                    # KBS2의 위치
-
+# print(channels)
 # 현재 0번부터 N-1번까지 존재중
 cursor = 0                          # 화살표 최초 위치는 제일 앞
 
-while POS1 > 0:
-    cursor += 1
-    print(1, end='')
-    
+if POS1 > POS2:
+    POS2 += 1
+
+while POS1 > 0:                     # KBS1의 위치가 0, 즉 첫번째가 아니면
+    if POS1 != cursor:              # 화살표가 KBS1의 위치가 아니면
+        cursor += 1
+        print(1, end='')
+    else:
+        channels[cursor-1], channels[cursor] = channels[cursor], channels[cursor-1]
+        cursor -= 1
+        POS1 -= 1
+        print(4, end='')
+
+while POS2 > 1:
+    if POS2 != cursor:              # 화살표가 KBS1의 위치가 아니면
+        cursor += 1
+        print(1, end='')
+    else:
+        channels[cursor-1], channels[cursor] = channels[cursor], channels[cursor-1]
+        cursor -= 1
+        POS2 -= 1
+        print(4, end='')
+# print(channels)
+
+
+
+# 이건 뭐지????
+# 어떻게 이렇게 한겨
+g=list(input() for _ in range(int(input())))
+temp=[]
+temp.append(g.index("KBS1")*"1")
+temp.append(g.index("KBS1")*"4")
+g.remove("KBS1")
+g=["KBS1"]+g
+temp.append(g.index("KBS2")*"1")
+temp.append((g.index("KBS2")-1)*"4")
+print(*temp,sep="")
