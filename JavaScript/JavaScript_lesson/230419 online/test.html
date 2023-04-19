@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function funcA(){
+        //     console.log(this)
+        // }
+        // // funcA()
+
+        const obj = {
+            a : [1,2,3],
+            functionForMap : function(x){
+                console.log(this)
+                return x*x
+            },
+
+            funcB : function(){
+                console.log(this)
+                // return this.a.map(this.functionForMap)
+                return this.a.map((x)=>{
+                    console.log(this)
+                    return x*x
+                })
+            },
+            func : function(){
+                this.a.funcC() 
+            }
+        }
+
+
+
+        // const obj2 = {
+        //     callback : function(){
+        //         console.log(this)
+        //     },
+        //     func1 : function(cb){
+        //         cb()
+        //          console.log(this)
+        //     }
+        // }
+
+
+
+
+        // result =  obj.funcB()
+        obj.a['funcC'] = function(){
+            console.log(this)
+        }
+        obj.func()
+        // console.log(result)
+
+// const fn = {
+//     title: 'Hello World!',
+//     tags: [1, 2, 3, 4],
+//     showTags() {
+//         this.tags.forEach(function(tag) {
+//         console.log(tag);
+//         console.log(this); // window
+//         });
+//     }
+// }
+
+// fn.showTags();
+
+// 1
+// window 객체 출력
+// 2
+// window 객체 출력
+// 3
+// window 객체 출력
+// 4
+// window 객체 출력
+
+
+
+// const fn = {
+//   title: 'Hello World!',
+//   tags: [1, 2, 3, 4],
+//   showTags() {
+//     this.tags.forEach(function(tag) {
+//       console.log(tag);
+//       console.log(this); // fn
+//     }, this); // 여기는 일반 함수 바깥, fn 객체를 참조할 수 있다.
+//   } 
+// }
+// fn.showTags();
+
+//         obj2.func1(obj2.callback)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
