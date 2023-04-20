@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .big-font{
+        font-size: 5em;
+      }
+      .small-font{
+        font-size: 0.5em;
+      }
+    </style>
+</head>
+<body>
+   <button id="btn1">클릭</button>
+   <button id="btn2">클릭</button>
+   <button id="btn3">클릭</button>
+   <button id="btn4">클릭</button>
+   <button>클릭</button>
+   <!-- 클릭이라는 이벤트가 발생했을때 처리 방법 -->
+   <!-- 이벤트 처리
+    각의 요소에 특정 이벤트가 발생하면 실행할 문장을 미리 정의해 두는 것
+    각 요소에 addEventListener를 추가
+    addEventListener : 이벤트가 발생하면 이벤트가 발생했음을 확인하는 객체?!
+    -->
+    <ul id="event-list"> 
+
+    </ul>
+
+  <script>
+    const btn1 = document.querySelector("#btn1")
+    //EventListener 추가해주기
+    btn1.addEventListener('click', function(){
+      alert("버튼이 눌렸어요!")
+    })
+    btn1.addEventListener('mouseover', function(){
+      console.log('마우스가 올라왔어요.')
+    })
+    btn1.addEventListener('mouseout', function(){
+      console.log('마우스가 나갔어요.')
+    })
+
+    // 아이디가 'btn2'인 요소를 선택하고
+    // 클릭 이벤트가 발생하면 event-list요소에 li요소 추가
+    const btn2 = document.querySelector("#btn2")
+    const eventList = document.querySelector("#event-list")
+    btn2.addEventListener('click',function(){
+      // li 요소 생성후에 eventList에 추가 하기
+      const li = document.createElement('li')
+      li.innerText = "짠!"
+      eventList.appendChild(li)
+    })
+    // btn3은 클릭 이벤트가 발생하면 아이디가 event-list인 요소의 하위 요소인 li요소들을
+    // 글자크기를 크게 만들기
+    const btn3 = document.querySelector("#btn3")
+    btn3.addEventListener("click", function(){
+      const listItems =  document.querySelectorAll('#event-list > li')  // > 요거는 다음에 나오는게 하위요소임을 의미
+      listItems.forEach(function(item){   //콜백함수 넣어줘야함
+        item.classList.remove('small-font')
+        item.classList.add('big-font')
+      })
+    })
+    // 아래는 틀림
+    // const btn3 = document.querySelector('#btn3')
+    // btn3.addEventListener('click', () => {
+    //   Fontlarger()
+    // })
+    // function Fontlarger(){
+    //   const LiTags = document.querySelector('li')
+    //   LiTags.forEach(element => {
+    //     element.classList.add(big-font)
+    //   })
+    // }
+    // btn4는 글자를 작게 만들기
+    // const btn4 = document.querySelector("#btn4")
+    // btn4.addEventListener("click", function(){
+    //   const listItems =  document.querySelectorAll('#event-list > li')  // > 요거는 다음에 나오는게 하위요소임을 의미
+    //   listItems.forEach(function(item){   //콜백함수 넣어줘야함
+    //     item.classList.add('small-font')
+    //   })
+    // })
+    // 근데 이거대로 하면 왜 제대로 안되나 했더니 계속 add되서 그렇군!
+    // 또는
+    // const btn4 = document.querySelector("#btn4")
+    // btn4.addEventListener("click", function(){
+    //   const listItems =  document.querySelectorAll('.big-font')  // > 요거는 다음에 나오는게 하위요소임을 의미
+    //   listItems.forEach(function(item){   //콜백함수 넣어줘야함
+    //     item.classList.remove('big-font')
+    //   })
+    // })
+    // 요롷게도 해볼까?
+    const btn4 = document.querySelector("#btn4")
+    btn4.addEventListener("click", function(){
+      const listItems1 =  document.querySelectorAll('.big-font')  // > 요거는 다음에 나오는게 하위요소임을 의미
+      listItems1.forEach(function(item){   //콜백함수 넣어줘야함
+        item.classList.add('small-font')
+        item.classList.remove('big-font')
+      })
+      // const listItems2 =  document.querySelectorAll('#event-list > li')  // > 요거는 다음에 나오는게 하위요소임을 의미
+      // listItems2.forEach(function(item){   //콜백함수 넣어줘야함
+      //   item.classList.add('small-font')
+      // })
+    })
+      
+    // 아래는 틀림
+    // const btn4 = document.querySelector('#btn4')
+    // btn4.addEventListener('click', () => {
+    //   Fontsmaller()
+    // })
+    // function Fontsmaller(){
+    //   const LiTags = document.querySelector('li')
+    //   LiTags.forEach(element => {
+    //     element.classList.add(small-font)
+    //   })
+    // }
+
+
+
+  </script>
+</body>
+</html>

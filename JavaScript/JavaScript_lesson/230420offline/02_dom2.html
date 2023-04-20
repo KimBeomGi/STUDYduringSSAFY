@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red-text{
+            color: red;
+        }
+        .fond-bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="greeting">으아아아아아아</div>
+    <ul id="parent"></ul>
+
+    <script>
+        // 요소 선택해서 조작하기
+        // 1. 아이디가 greeting인 요소의 내용을 '안녕하세요!'로 만들기
+        const greeting = document.querySelector("#greeting")
+        // greeting.innerHTML = "<h1>안녕하세요!</h1>"
+        greeting.innerText = "<h1>안녕하세요2222</h1>"
+        // 2. 아이디가 parent인 ul요소에 li요소 만들기
+        const parent = document.querySelector("#parent")
+        const li1 = document.createElement('li')
+        const li2 = document.createElement('li')
+        li1.setAttribute('class', 'fond-bold')
+        li1.innerText = '김싸피'
+        li2.innerText = '이싸피'
+        parent.appendChild(li1)
+        parent.append(li2)
+
+        // 3. li요소를 모두 선택해서, 'class' 속성을 'red-text'로 변경
+        // item.setAttribute('속성명', '값')
+        const listItems = document.querySelectorAll('li')
+        for(item of listItems){
+            //기존에 class속성 가지고 와서 + red-text
+            let origin = item.getAttribute('class')
+            // origin + ' ~~' 처럼 할때 한칸 띄어쓰기 되어 있어줘야 함
+            // item.setAttribute('class',origin + ' red-text')   //클래스 속성을 red-text로 변경
+            item.classList.add('red-text')
+            item.classList.toggle('font-bold')
+            console.log(item.classList)
+        }
+
+    </script>
+</body>
+</html>

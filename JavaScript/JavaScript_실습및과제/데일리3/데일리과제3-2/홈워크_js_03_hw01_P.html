@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="" id="form">
+
+    <input type="submit" value="제출">
+  </form>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    // 이곳에 코드를 작성합니다.
+    const aTag = document.createElement('a')              // a 태그 생성
+    aTag.innerText = 'SSAFY'                              // <a>SSAFY</a>로 만들기
+    aTag.setAttribute('href', 'https://www.ssafy.com/')   // a태그에 이동할 사이트 생성
+    console.log(aTag.getAttribute('href'))
+    const div = document.createElement('div')
+    div.appendChild(aTag)
+    document.body.appendChild(div)
+    // aTag.classList.add('btn')
+    // aTag.classList.add('btn-primary')
+
+    // EventListener를 이용해보자
+    aTag.addEventListener('click', function(e){
+      
+      alert('a click!')
+      // e.stopPropagation()
+      e.preventDefault()
+    })
+
+    const form = document.querySelector('#form')
+    form.addEventListener('submit',function(e){
+      // e.preventDefault()
+    })
+
+
+    div.addEventListener('click',function(){
+      
+      alert('div click!')
+    })
+
+  </script>
+</body>
+</html>

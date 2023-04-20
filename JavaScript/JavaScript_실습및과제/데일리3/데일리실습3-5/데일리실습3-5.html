@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+      <input type="text" id="todo-text">
+      <input type="submit" value="Add">
+    </form>
+
+    <script>
+      const ulTag = document.createElement('ul')      // ul 태그 생성하기
+      const todoText = document.querySelector('#todo-text')   //input하는 값을 찾기위함
+      const formTag = document.querySelector('form')  // form을 form태그라고 부르기
+      document.body.appendChild(ulTag)
+      let id_num = 0
+      formTag.addEventListener('submit', function(e){
+        // console.log(typeof(todoText.value))
+        if (!todoText.value) { // submit 눌러놓고 값이 없으면 ?
+          e.preventDefault()
+          e.stopPropagation()
+          alert('동무, 내용을 입력하라우!!!')
+        }
+        else {  // 정상일 때
+          let li = document.createElement('li')       // li태그를 생성함
+          li.innerText = todoText.value               // li에 값을 todoText의 값을 넣음
+          li.setAttribute('id', 'linum-'+id_num)
+          id_num += 1
+          ulTag.appendChild(li)                       // ul태그에 생성한 li태그를 끼워넣음
+        }
+        e.preventDefault()                          // 새로고침 방지하기 위한 preventDefault()    
+
+      })
+
+    </script>
+</body>
+</html>

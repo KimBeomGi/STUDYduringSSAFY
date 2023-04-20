@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* id 선택자, class선택자, 태그 선택자, 송성 선택자 */
+        /* id 선택자는 #id, class 선택자는 .class*/
+        h1{
+            color: blue;
+        }
+        
+        #greeting{
+            font-size: 2em;
+        }
+        .red-text{
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <ul>
+        <li id="greeting" class="red-text">반갑습니다.</li>
+        <li class="red-text">Hello</li>
+    </ul>
+
+
+    <script>
+        // 아직 문서객체가 만들어지지 않았는데... 자바스크립트에서는 참조하려니까
+        // 문제가 발생함
+        // 따라서 문서가 다 만들어지고 나서 실행하면 됨. 따라서 <script>를 하단에 작성하게됨
+        // [참고] window는 최상위 객체를 의미한다.
+        // 위에서 작성해야할 일이 있다면
+        window.onload = function(){ //body까지 다 읽으면! eventlistener???
+            //요 안에다가 내용을 작성하면 된다.
+        }   
+
+        //선택(querySelector, 단일 요소 선택, querySelectorAll : 복수 요소 선택)
+        // let greetingLi = document.querySelector('#greeting')
+        // console.log(greetingLI.innerHTML)
+        let listItems = document.querySelectorAll('li')
+        console.log(listItems)
+        // for(item of listItems){} 또는
+        // for (let i=0; i< listItems.length; i++){
+        //     console.log(listItems[i].innerText)
+        // }
+        //조작
+        let redTextElement = document.querySelector('.red-text')
+        console.log(redTextElement)
+
+    </script>
+</body>
+</html>
