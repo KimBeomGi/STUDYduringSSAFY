@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .done{
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <form action="" id="todoForm">
+    <input type="text" id="todoInput">
+    <input type="submit" value="Add">
+  </form>
+  <ul id="todoList">
+    <!-- <li>12312</li>
+    <li>bbb</li> -->
+  </ul>
+  <script>
+    // html 요소를 선택하고, 조작
+    // form 요소에서 submit 이벤트가 발생하면
+    // input text에 사용자가 입력한 내용을 가지고 와서
+    // 리스트에 추가
+    const todoForm = document.querySelector("#todoForm")
+    const todoInput = document.querySelector("#todoInput")
+    const todoList = document.querySelector("#todoList")
+    // 이벤트 처리
+    // form 요소에 submit 이벤트가 발생하면 실행할 문장을 미리 등록
+    // form 요소에 이벤트리스너를 추가 :
+    // addEventListenr() 메서드의 인자로, 이벤트 종류와 코드를 넣어준다.
+    todoForm.addEventListener('submit', function(event){      // event 객체가 날라오니 event라 그냥 매개변수로 명명하자
+      // alert("서브밋 이벤트  발생함!")
+      // alert(todoInput.value)
+      // todoInput.value 가지고 와서 li 요소 만들고 todoList에 자식으로 달아주기
+      const li = document.createElement("li")
+      li.innerHTML = todoInput.value
+      todoList.appendChild(li)
+      li.addEventListener('click',function(){
+        li.classList.toggle('done')
+      })
+      // list가 자꾸 날아가는게... 새로고침이 되어서
+      // 새로고침이 왜 되냐면 Form 이 원래 그럼. submit이벤트가 발생하면
+      // 요청을 만들어내서 그럼
+      // 요청이 만들어지는 것을 막으면 된다. 어려우니까 그냥 아 그렇구나
+      event.preventDefault()
+      todoInput.value = ''
+
+    })
+  </script>
+</body>
+</html>
