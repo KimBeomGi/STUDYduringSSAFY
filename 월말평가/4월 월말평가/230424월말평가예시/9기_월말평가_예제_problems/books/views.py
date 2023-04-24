@@ -9,6 +9,15 @@ from .models import Book
 @api_view(['GET', 'POST'])
 def book_list(request):
     # Q 1.
+    if request.mehtod=='GET':
+        books = Book.objects.all()
+        serializer = BookListSerializer(books, many=True)
+        return Response(serializer.data)
     # Q 2.
+    elif request.method=='POST':
+        serializer = BookListSerializer(data = request.POST)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
     pass
 

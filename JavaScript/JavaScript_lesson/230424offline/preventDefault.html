@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.naver.com" id="linkA"><h1>눌러보쇼</h1></a>
+    <form action="" id="testForm">
+        <input type="text" name="title">
+        <input type="submit" value="제출">
+    </form>
+    <script>
+        //각 요소들은 특정이벤트가 발생하면 기본적으로 수행하는 내용들이 있3
+        // <a> 태그는 href='' 속성에 적혀있는 url로 요청 생성
+        // <form> 태그는 submit 이벤트가 발생하면 action=''에 적혀있는 곳으로 요청 생성
+        const linkA = document.querySelector('#linkA')
+        linkA.addEventListener('click', function(e){
+            alert('클릭됐습니다!')
+            // 이벤트에 의해서 기본으로 수행되는 작업을 중단시키고 싶다!
+            e.preventDefault()
+        })
+        const testForm = document.querySelector('#testForm')
+        testForm.addEventListener('submit', function(e){
+            alert('submit 이벤트 발생!')
+            e.preventDefault()
+            //내가 직접 서버에 get요청 보내기 post 요청 보내기
+            //서버는 나한테 결과를 json 으로 던져 줄거고
+            //그거 받아서 결과에 따라서 html요소 만들기
+        })
+    </script>
+</body>
+</html>

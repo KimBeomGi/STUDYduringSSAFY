@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이벤트 처리에 대해서 알아봅시다. -->
+    <!-- 버튼은 form 요소의 submit과 다르게 enter를 쳐도 입력이 안됨 -->
+    <input type="text" id="inputText"><button id="btnInput">눌러봐!</button>
+    <ul id="inputList"></ul>
+    <script>
+        //버튼이 눌리면 id가 inputText인 요소의 value를 받아서
+        // inputList에 li추가 하기
+        const btnInput = document.querySelector("#btnInput")
+        const inputList = document.querySelector("#inputList")
+        const inputText = document.querySelector("#inputText")
+        btnInput.addEventListener('click', function(){
+            const li = document.createElement("li")
+            li.innerText = inputText.value
+            inputText.value = ''
+            inputList.appendChild(li)
+        })
+        // input 요소에 enter key가 눌리면.... 동작을 하고 싶다.
+        inputText.addEventListener('keyup', function(event){
+            //발생한 이벤트를 검사해서 
+            // console.log(event.keyCode)
+            if (event.keyCode === 13) {
+                console.log(event.keyCode)
+                console.log("엔터키가 눌렸어요");
+                const li = document.createElement("li")
+                li.innerText = inputText.value
+                inputText.value = ''
+                inputList.appendChild(li)
+            }
+        })
+        
+        
+    </script>
+</body>
+</html>

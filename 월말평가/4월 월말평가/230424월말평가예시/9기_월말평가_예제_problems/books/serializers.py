@@ -5,8 +5,8 @@ from .models import Book
 class BookListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = '__all__'
-
+        # fields = '__all__'
+        fields = ('id', 'title',)
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:

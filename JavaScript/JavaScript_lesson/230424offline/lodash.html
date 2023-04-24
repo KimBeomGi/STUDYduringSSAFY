@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .number{
+            width: 40px;
+            height: 50px;
+            background-color: red;
+            border: 1px solid black;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+        .ball {
+            width: 10rem;
+            height: 10rem;
+            margin: .5rem;
+            background-color: crimson;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 10rem;
+            font-size: xx-large;
+            font-weight: bold;
+            color: white;
+        }
+        .ball-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnLotto">생성</button>
+    <div id="lottoContainer">
+
+    </div>
+    <!-- lodash를 사용할 수 있?도록 script 로딩 -->
+    <script src="
+    https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+    "></script>
+    <script>
+        const arr = [1,2,3,4,5]
+        const btnLotto = document.querySelector("#btnLotto")
+        const lottoContainer = document.querySelector('#lottoContainer')
+        btnLotto.addEventListener('click', function(){
+            lottoContainer.innerHTML = ''
+            const numbers = _.range(1,46)
+            // console.log(numbers)
+            const winNumbers = _.sortBy(_.sampleSize(numbers,6))
+            // 반복문 돌면서 div 만들어서 lottoContainer에 갖다 붙이기
+            for (number of winNumbers){
+                const div = document.createElement("div")
+                div.innerText = number
+                // div.classList.add("ball")
+                // div.classList.add("ball-container")
+                div.classList.add("number")
+                div.classList.add("ball-container")
+                lottoContainer.appendChild(div)
+            }
+        })
+        // _.reverse(arr)
+        // console.log(arr)
+        // const new_arr = _.slice(arr,2,4)
+        // console.log(new_arr)
+        const numbers = _.range(1,46)
+        console.log(numbers)
+        console.log(_.sortBy(_.sampleSize(numbers,6)))
+    </script>
+</body>
+</html>
