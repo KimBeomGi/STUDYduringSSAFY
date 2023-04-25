@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+  
+  <div class="container">
+
+    <form id="form" class="my-3">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="title">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="content" rows="3"></textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary">add</button>
+      </div>
+    </form>
+    
+    <section id="cardsSection" class="row">
+      
+      <!-- 카드 예시 -->
+      <article class="col-4">
+        <div class="card m-1">
+          <div class="card-body">
+            <h5 class="card-title">Example</h5>
+            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti placeat odit rerum asperiores beatae vitae doloremque consectetur magni delectus, fuga autem laudantium, quidem iusto voluptates non earum dolorem totam dolores.</p>
+          </div>  
+        </div>
+      </article>
+      <!-- 카드 예시 -->
+      
+    </section>
+
+  </div>
+
+  <script>
+    /* 
+      사용자가 form 에 title과 content를 입력하고 submit하면, 예시와 같은 카드를 생성하여 div#cardSection에 추가하는 코드를 작성하시오.
+      카드가 생성되면 기존 input과 textarea의 내용은 삭제되어야 합니다.
+      (완성 이후 카드 예시는 삭제)
+    */
+   // form 요소에 submit 이벤트가 발생하면 title과 content에 있는 내용으로 card만들고
+   // section 추가하기
+    const form = document.querySelector('#form')
+    const title = document.querySelector('#title')
+    const content = document.querySelector('#content')
+    const cardsSection = document.querySelector('#cardsSection')
+
+    form.addEventListener('submit',function(event){
+      // 폼에 submit 이벤트가 발생하면 실행할 부분
+      // form에 submit 이벤트가 발생하면 동작하는 것을 취소하고 나서 내가 할 것 해야함.
+      event.preventDefault()
+      // 카드 만들기
+      // article 만들기, div(card), div(card-body), h5 (card-title), p(card-text)
+      const article = document.createElement('article')
+      article.classList.add('col-4')
+
+      const card = document.createElement('div')
+      card.classList.add('card')
+      card.classList.add('m-1')
+
+      const cardBody = document.createElement('div')
+      cardBody.classList.add('card-body')
+
+      const cardTitle = document.createElement('h5')
+      cardTitle.classList.add('card-title')
+      cardTitle.innerText = title.value
+      title.value=''
+
+      const cardText = document.createElement('p')
+      cardText.classList.add('card-text')
+      cardText.innerText = content.value
+      content.value=''
+
+      article.appendChild(card)
+      card.appendChild(cardBody)
+      cardBody.appendChild(cardTitle)
+      cardBody.appendChild(cardText)
+
+      cardsSection.appendChild(article)
+
+      // article이 클릭이 되면 삭제 여부 물어보기
+      article.addEventListener('click', function(){
+        const result = window.confirm('삭제할텨?')
+        if (result===true){
+          article.remove()
+        }
+        // article.remove()
+        console.log(cardTitle.innerText)
+      })
+    })
+
+  </script>
+</body>
+</html>

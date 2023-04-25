@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog API</title>
+  <style>
+    img {
+      height: 500px;
+    }
+  </style>
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Dog API</h1>
+  <p><img src="" alt="dog"></p>
+  <br>
+  <p><button>Get dog</button></p>
+  
+  <!-- axios CDN을 삽입한다. -->
+  
+  <script>
+    const API_URI = 'https://dog.ceo/api/breeds/image/random'
+    function getDog () {
+      // axios를 사용하여 API_URI로 GET 요청을 보낸다.
+      axios.get(API_URI)
+      // .then 메서드를 통해 요청이 성공적인 경우의 콜백함수를 정의한다.
+      .then((response) => {
+        imgElement = document.querySelector('img')
+        
+      // 응답객체의 데이터에서 이미지에 대한 리소스를 img 요소의 src 속성으로 할당한다.
+        // console.log(response.data.message)
+        imgElement.setAttribute('src', response.data.message)
+        document.body.appendChild(imgElement)
+      })
+    }
+
+    const button = document.querySelector('button') // button 변수 초기화
+    button.addEventListener('click', getDog)        // 버튼을 클릭하면 getdog 함수를 실행
+  </script>
+</body>
+</html>

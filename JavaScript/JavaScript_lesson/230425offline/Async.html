@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+      
+      const url = "https://api.thecatapi.com/v1/images/search"
+      // // XMLHttpRequest
+      axios.get(url)
+      .then(function(response){
+        console.log(response)
+        console.log('요청이 완료됨!')
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+
+      // const request = new XMLHttpRequest()
+      // request.open('GET',url)
+      // request.send(null)
+      // console.log(request.status)
+      // console.log(request.response)
+  
+
+      // 응답이 들어오면 그 때 출력해라
+      // Promise
+      const promise = new Promise((resolve,reject)=>{
+        console.log("얘는 그냥 실행됩니다.")
+        setTimeout(()=>{
+          if(_.sample([0,1])){
+            resolve("성공!!!!!!!")
+          }else{
+            reject("실패ㅠㅠㅠㅠ")
+          }
+        },2000)
+      })
+      promise
+      .then(()=>{
+        console.log('성공한거 같은데요?')
+      })
+      .catch(()=>{
+        console.log('실패한거 같은데요?')
+      })
+      
+      // Promise 객체 이용해서 요청에 대한 응답이 생성되면
+      // 응답을 출력하자
+      const request = new XMLHttpRequest()
+      const requestPromise = new Promise((resolve,reject)=>{
+        request.open('GET',url)
+        request.send(null)
+        request.onreadystatechange = function(e){
+          if (request.readyState === XMLHttpRequest.DONE){
+            if(request.status >= 200 && request.status < 300){
+              resolve(request.responseText) 
+            }else{
+              reject(request.status)
+            }
+          }
+          
+        }
+
+      })
+      
+      requestPromise
+      .then((result)=>{
+        // console.log(request.status)
+        console.log(result)
+        // console.log(request.responseText)
+      })
+      .catch()
+      
+
+
+
+
+
+  </script>
+</body>
+</html>

@@ -43,20 +43,7 @@
     */
     
     // lodash 를 활용하여 1.jpg ~ 6.jpg 중 하나의 경로로 body의 backgroundImage url을 설정
-    // hint
-    ///////////////////////////////////////////////////////////////////////
-    // chatgpt에게 물어봤는디
-    const _ = require('lodash');
-
-    // 이미지 파일 경로들의 배열
-    const imagePaths = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
-
-    // 랜덤으로 이미지 파일 경로 선택
-    const randomImagePath = _.sample(imagePaths);
-
-    // body의 backgroundImage url 설정
-    document.body.style.backgroundImage = `url(${randomImagePath})`;
-    ///////////////////////////////////////////////////////////////////////
+    // hintㅣㅐ
 
     const timeDiv = document.querySelector('#time')
     const formatTime = function () {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- axios script는 head쪽에 갖다붙여도 됨 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <p><button id="btnCat">고양이</button></p>
+  <p><img src="" alt="고양이" id="imgCat"></p>
+  <script>
+    // 고양이 버튼을 누르면 고양이 이미지를 출력
+    // https://api.thecatapi.com/v1/images/search
+    // 에서 주소 받아와서 img요소에src 속성을 바꿔주기
+    const btn = document.querySelector('#btnCat')
+    const img = document.querySelector('#imgCat')
+    // 버튼이 눌리면 고양이 이미지를 가져와서 img 요소에 설정
+    function getCatImage(){
+    // btn.addEventListener('click', function(){
+      //고양이 이미지 요청 <<< 얘가 시간이 오래 걸리는 요소니까..(Be동기를 하자!!!)
+      //이미지의 속성 변경
+      axios({
+        method: 'get',
+        url: "https://api.thecatapi.com/v1/images/search",
+      })
+      .then(function(response){
+        // console.log(response.data[0].url)
+        img.setAttribute("src", response.data[0].url)
+      })
+    // })
+    }
+  // 버튼이 눌리면 고양이 이미지를 가져와서 img 요소에 설정
+  btn.addEventListener('click',getCatImage)   // ㅂ튼 눌렀을때 getCatImage함수를 실행
+  //페이지가 로딩이 되면 고양이 이미지 가져오기
+  // window.addEventListener("load", function(){
+  // })
+  window.onload = getCatImage // 새로고침했을 때 getCatImage함수를 실행
+  </script>
+</body>
+</html>

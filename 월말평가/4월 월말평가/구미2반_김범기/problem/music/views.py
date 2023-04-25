@@ -17,7 +17,7 @@ def music_list(request):
     
     # 문제 2. MusicSerializer를 이용하여 유효성 검사 후 음악 정보를 생성할 수 있도록 코드를 완성하시오.
     elif request.method == 'POST':
-        serializer = MusicSerializer(data=request.POST)
+        serializer = MusicSerializer(data=request.data)
         # 유효성 검사!
         if serializer.is_valid(raise_exception=True):
             serializer.save()   # 유효성 검사했으니 저장!
@@ -65,10 +65,10 @@ def review_list(request):
 # 작성된 리뷰의 JSON과 함께 201 상태 코드를 반환합니다.
 @api_view(['POST'])
 def review_create(request, music_pk):
+    music = get_object_or_404(Music,pk=music_pk)
     serializer = ReviewSerializer(data=request.POST)
     if serializer.is_valid(raise_exception=False):
-        serializer(pk=music_pk)
-        serializer.save()
+        serializer.save(music=music)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status=status.HTTP_400_BAD_REQUEST)
     
@@ -81,7 +81,7 @@ def review_detail(request, review_pk):
 
     if request.method == 'GET':
         review = get_object_or_404(Review, pk=review_pk)
-        serializer = ReviewSerializer(data=review)
+        serializer = ReviewSerializer(review)
         return Response(serializer.data)
     
     # 문제 10. DELETE 로 요청오는 경우 해당 리뷰가 삭제될 수 있도록 아래에 코드를 완성하시오.

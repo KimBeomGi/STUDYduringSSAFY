@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('Hi')
+
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(function () {
+        resolve(console.log('SSAFY'))
+      }, 3000)
+      // resolve()
+    })
+    promise.then(function(){
+      console.log('Bye')
+    })
+    promise.catch(function(error){
+      console.log(error)
+    })
+
+  </script>
+</body>
+</html>
+
+
+<!-- 아래 방법도 있음 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+console.log('Hi')
+
+new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    console.log('SSAFY')
+    resolve()
+  }, 3000)
+})
+.then(function() {
+  console.log('Bye')
+})
+
+  </script>
+</body>
+</html> -->
