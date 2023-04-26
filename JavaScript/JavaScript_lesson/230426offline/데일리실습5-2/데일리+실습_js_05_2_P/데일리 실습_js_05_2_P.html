@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    img {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dog API</h1>
+  <img draggable="false" src="./noResult.png" alt="dog">
+  <h2>아직 선택된 사진이 없습니다!</h2>
+  <br>
+  <button>Get dog</button>
+
+  <script>
+		// 이곳에 코드를 작성해 주세요 !
+    const btn = document.querySelector('button')
+    const API_URL = 'https://api.thecatapi.com/v1/images/search'
+    
+    // btn.addEventListener('click', function(){
+    //   //api 서버로 요청보내고 응답받아와서 img요소에 src속성에 넣어주기
+    //   axios({
+    //     method: "get",
+    //     url: API_URL
+    //   })
+    //   .then(function(response){
+    //     // console.log(response)
+    //     const img = document.querySelector('img')
+    //     img.src = response.data[0].url
+    //   })
+    // })
+
+    async function getCatImg() {
+      const response = await fetch(API_URL);
+      const result = await response.json()
+      console.log(result[0].url)
+      const img = document.querySelector('img')
+      img.src = result[0].url
+    }
+    btn.addEventListener('click', getCatImg)
+  </script>
+</body>
+</html>

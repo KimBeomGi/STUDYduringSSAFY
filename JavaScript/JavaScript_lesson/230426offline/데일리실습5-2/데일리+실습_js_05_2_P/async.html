@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function myFunc(){
+            // await api 요청하기
+            // api 요청이 끝나면 실행
+            
+            return 1
+        }
+
+        const result = myFunc()
+        result
+        .then(function(res){
+            console.log(res)
+        })
+        .catch()
+
+    </script>
+</body>
+</html>
