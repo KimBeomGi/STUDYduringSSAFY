@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <p>{{ movie }}</p>
+    <p>{{ message }}</p>
+    <p>{{ movie }}</p>
+    <p>{{ message }}</p>
+    <p>{{ movie }}</p>
+  </div>
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    // const app = new Vue(옵션)
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        movie: '아바타-ENFP',
+      },
+      methods:{
+        print: function(){
+          console.log('print 입니다.')
+        },
+        bye(){
+          this.message = this.message + 'a'
+        },
+        // arrow함수를 사용하면 원하는 결과를 못만들어 낼 수도 있다.
+        // 이유는 this가 window를 가리키기 때문
+        arrowBye: () => {
+          this.message = 'Arrow Function!'
+          console.log(this)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

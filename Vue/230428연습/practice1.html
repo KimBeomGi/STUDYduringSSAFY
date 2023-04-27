@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{message}}</p>
+        <input type="text" id="comment" v-model="message">
+        <button v-on:click="funcB()">눌러보쇼</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data : {
+                message : '안녕하세요 Vue입니다!!'
+            },
+            methods:{
+                funcA : function(){
+                    console.log(this.message)
+                },
+                funcB(){
+                    alert('경고!!!     '+this.message+'라는 메세지!!!!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

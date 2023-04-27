@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <p>{{ msg }}</p>
+    <input type="text" id="comment" v-model="msg">
+    <button v-on:click="funcB()">눌러보쇼!</button>  <!-- v-on은 어떤 이벤트가 발생하면 뭐해라 같은 내용임.-->
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const vue = new Vue({
+      el : '#app',       // el 은 element를 의미함
+      data : {
+          msg : 'msg는 맛소금!'
+      },
+      // method가 여러개 들어갈 수 있기 때문에 methods:{}로 작성
+      methods:{
+        // 작성 1번째 방법
+        funcA : function(){
+          console.log(this.msg)
+        },
+        // 작성 2번째 방법
+        funcB(){
+          alert(this.msg+'!!!')
+        }
+        // arrow 함수를 사용하면 this를 사용했을때 window를 가리키기 때문에 사용 X
+        // funcB:()=>{
+        //   alert(this.msg+'!!!')
+        // }
+      }
+    })
+  </script>
+</body>
+</html>
