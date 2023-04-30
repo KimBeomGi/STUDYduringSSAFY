@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      {% if user.is_authenticated %}
+      <h3>Hello, {{ user.username }}</h3>
+      <a href="{% url 'accounts:profile' user %}">내 프로필</a>
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+      </form>
+      <a href="{% url 'movies:index'%}">Movie</a>
+      <a href="{% url 'community:index'%}">Community</a>
+      <a href="{% url 'community:create'%}">New Review</a>
+      <form action="{% url 'movies:recommended' %}">
+        <select class="form-select" name="genre">
+          <option selected value="00">원하시는 장르를 선택해주세요.</option>
+          <option value="28" >액션</option>
+          <option value="12">모험</option>
+          <option value="16">애니메이션</option>
+          <option value="35">코미디</option>
+          <option value="80">범죄</option>
+          <option value="99">다큐멘터리</option>
+          <option value="18">드라마</option>
+          <option value="10751">가족</option>
+          <option value="14">판타지</option>
+          <option value="36">역사</option>
+          <option value="27">공포</option>
+          <option value="10402">음악</option>
+          <option value="9648">미스터리</option>
+          <option value="10749">로맨스</option>
+          <option value="878">SF</option>
+          <option value="10770">TV 영화</option>
+          <option value="53">스릴러</option>
+          <option value="10752">전쟁</option>
+          <option value="37">서부</option>
+          
+        </select>
+        <input type="submit" class="btn btn-success"  value="추천 받기!">
+      </form>
+      {% else %}
+      <a href="{% url 'accounts:signup' %}">Signup</a>
+      <a href="{% url 'accounts:login' %}">Login</a>
+      {% endif %}
+    </nav>
+    {% block content %}
+    {% endblock content %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  {% block script %}{% endblock script %}
+</body>
+</html>

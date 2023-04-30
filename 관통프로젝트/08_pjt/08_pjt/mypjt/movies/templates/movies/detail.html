@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<h1>Movie Detail </h1>
+<h3>{{movie.title}}</h3>
+<hr>
+<div class="d-flex flex-row">
+  <img src="{{movie.poster_path}}" class="card-img w-100" style="300px" >
+  <div class="container">
+    {% if movie.release_date %}
+    <h5 class="col">개봉일 : {{ movie.release_date }}</h5>
+    {% endif %}
+    {% if movie.overview %}
+    <h5 class="col">줄거리</h5>
+    <h6 class="col"> {{ movie.overview }}</h6>
+    {% endif %}
+    {% if movie.vote_average %}
+    <h5 class="col">평점 : {{ movie.vote_average }}. 집계 {{movie.vote_count}}</h5>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
