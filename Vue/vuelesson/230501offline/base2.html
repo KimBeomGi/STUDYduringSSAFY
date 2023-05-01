@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>doubleNumber : {{ doubleNumber }}</p>
+    <p>doubleNumber : {{ doubleNumber }}</p>
+    <p>doubleNumber : {{ doubleNumber }}</p>
+    
+    <p>getDoubleNumber : {{ getDoubleNumber }}</p>
+    <p>getDoubleNumber : {{ getDoubleNumber }}</p>
+    <p>getDoubleNumber : {{ getDoubleNumber }}</p>
+
+    <!-- <button v-on:click="addOne">눌러보쇼</button> -->
+    <button @click="addOne">눌러보쇼</button>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>    
+  <script>
+    //methods, computed, watch 의 사용법
+    const app = new Vue({
+      el: '#app',
+      data: {
+        number : 10
+      },
+      methods : {
+        getDoubleNumber(){
+          console.log('methods getDoubleNumber 실행됨!')
+          return this.number * 2
+        },
+        addOne(){
+          this.number++
+        }
+      },
+      
+      computed: {
+        // 값을 계산해서 가지고 있으면서 데이터를 제공
+        // 값을 얻어오는 역할이니까 반환값 필수
+        doubleNumber : function(){
+          console.log('computed getDoubleNumber 실행됨!')
+          return this.number * 2
+        }
+      },
+
+    watch: {
+      number : function(newValue, oldValue){
+        console.log('number가 수정되었습니다!')
+        console.log(`${oldValue} -> ${newValue}`)
+        //얘는 반환 값이 필요 없음. 그냥 값이 변경되면
+        // 실행하는 코드임.
+      }
+    }
+    })
+
+  </script>
+</body>
+</html>

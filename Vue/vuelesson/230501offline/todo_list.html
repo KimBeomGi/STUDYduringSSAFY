@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .done{
+        text-decoration: line-through;
+        color: gray;
+        /* font-weight: bold; */
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Todo List</h1>
+    <p>
+      <input type="text" v-model='content'>
+      <button @click="addTodo">+</button>
+    </p>
+
+    <!-- 할 일 목록 -->
+    <ul>
+      <li v-for="todo in todoList" :key="todo.date">  <!-- v-for할 때는 key값이 필수나 마찬가지 -->
+        <input type="checkbox" @click="toggleTodo(todo)">
+        <span :class="{done:todo.isCompleted}">{{ todo.content }}</span>
+      </li>
+    </ul>
+
+    <button @click="deleteDone">완료 목록 삭제</button>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>    
+  <script>
+    const app = new Vue({
+      el : '#app',
+      data : {
+        todoList : [],
+        content : '',
+      },
+      methods: {
+        addTodo(){
+          // todo 객체 하나 만들어서
+          // 리스트에 추가
+          const todo = {
+            content : this.content,
+            isCompleted : false,
+            date : new Date().getTime()
+          }
+          this.todoList.push(todo)
+          this.content = ''
+          
+        },
+        deleteDone(){
+          // 내가 가지고 있는 목록에서 isCompleted가 true인 애들은 빼고
+          // 아닌 애들만 가지고 리스트만들어 내기
+          this.todoList = this.todoList.filter((todo) => {
+            // 이 함수의 반환값이 true 요소만 남기는 새로운 배열 반환
+            return !todo.isCompleted
+            // return todo.isCompleted == false
+          })
+        },
+        toggleTodo(todo){
+          //어떤 특정한 todo의 isCompleted를 반대 상태로 변경
+          todo.isCompleted = !todo.isCompleted
+        }
+      },
+    })
+
+  </script>
+</body>
+</html>

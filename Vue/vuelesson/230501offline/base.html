@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red-text{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div> {{ msg }}</div>
+        <!-- <button v-on:click="func1">눌러보쇼!!</button> -->
+        <button @click="func1">눌러보쇼!!</button> <!-- v-on: 이나 @나 같음 -->
+        <p v-text="msg"></p>
+        <p v-html="msg"></p>
+        <p v-show="isActive">이거슨 v-show</p>
+        <p v-if="isActive">이거슨 v-if</p>
+
+        <!-- <p class="'red-text">내가 글자에 빨간 글씨를 적용해볼게</p> -->
+        <!-- v-bind : 지정한 html 요소 속성에 값 설정 -->
+        <p v-bind:class="redText">내가 글자에 빨간 글씨를 적용해볼게</p>
+        
+        <!-- 값:조건(참,거짓)  조건이 참이면 해당 속성을 바인딩 -->
+        <p :class="{'red-text':isActive}">내가 글자에 빨간 글씨를 short-cut적용해볼게</p><!-- v-bind의 shortcut은 v-bind만 없애면 됨 -->
+        <p :class="[isActive? redText : '']">내가 글자에 빨간 글씨를 class 바인딩으로 적용해볼게</p><!-- v-bind의 shortcut은 v-bind만 없애면 됨 -->
+        <!-- v-bind는 redText의 값을 집어넣어라 가 됨 -->
+
+
+        <!-- v-bind : 지정한 html 요소 속성에 값 설정 -->
+        <div v-for="(word, index) in words" v-bind:key="word.id">
+            <!-- <p>{{ index }} : {{ word }}</p> -->
+            <p> {{word.id}} : {{word.value}}</p>
+        </div>
+        
+        <input type="text" v-model="inputText">
+        <p>{{ inputText }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el : "#app",
+            data : {
+                msg : '<h1>Hello world!</h1>',
+                redText : 'red-text',
+                isActive : true,
+                // words : ['apple', 'banana', 'car'],
+                words: [
+                    {id:1, value:'apple'},
+                    {id:2, value:'banana'},
+                    {id:3, value:'car'},
+                ],
+                inputText: ''
+            },
+            methods : {
+                func1 : function(){
+                    // alert('Hello!   first')
+                    this.isActive = !this.isActive
+                },
+                func2(){
+                    alert('Hello!!  second')
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
