@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .done{
+        text-decoration: line-through;
+        color: gray;
+        /* font-weight: bold; */
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Todo List</h1>
+    <p>
+      <select v-model="status">
+        <option value="all">전체</option>
+        <option value="inProgress">진행중</option>
+        <option value="completed">완료</option>
+      </select>
+        <input type="text" v-model='content'>
+        <button @click="addTodo">+</button>
+      
+    </p>
+
+    <!-- 할 일 목록 -->
+    <ul>
+      <li v-for="todo in todoListByStatus" :key="todo.date">  <!-- v-for할 때는 key값이 필수나 마찬가지 -->
+        <input type="checkbox"
+        v-bind:checked="todo.isCompleted" 
+        @click="toggleTodo(todo)">
+        <span :class="{done:todo.isCompleted}">{{ todo.content }}</span>
+      </li>
+    </ul>
+
+    <button @click="deleteDone">완료 목록 삭제</button>
+    <button @click="save">저장</button>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>    
+  <script>
+
+    const loadedTodoList = JSON.parse(localStorage.getItem('todoList'))||[]
+    console.log(loadedTodoList)
+
+    const app = new Vue({
+      el : '#app',
+      data : {
+        todoList : loadedTodoList,
+        content : '',
+        status : 'all',
+      },
+      methods: {
+        addTodo(){
+          // todo 객체 하나 만들어서
+          // 리스트에 추가
+          const todo = {
+            content : this.content,
+            isCompleted : false,
+            date : new Date().getTime()
+          }
+          // if else문을 이용해서 빈 내용은 입력하지 않게 만```````````````````````````````````````````````````````````````````````````````````````````````````````````````````들어주었음.
+          // this.content ? this.todoList.push(todo) : alert("내용을 입력해주세요")
+
+          this.content && this.todoList.push(todo) || alert("내용을 입력해주세요")
+
+          // if(!this.content){
+          //   alert("내용을 입력해주세요")
+          // }else{
+          // this.todoList.push(todo)
+          // }
+          this.content = ''
+          
+        },
+        deleteDone(){
+          // 내가 가지고 있는 목록에서 isCompleted가 true인 애들은 빼고
+          // 아닌 애들만 가지고 리스트만들어 내기
+          this.todoList = this.todoList.filter((todo) => {
+            // 이 함수의 반환값이 true 요소만 남기는 새로운 배열 반환
+            return !todo.isCompleted
+            // return todo.isCompleted == false
+          })
+        },
+        toggleTodo(todo){
+          //어떤 특정한 todo의 isCompleted를 반대 상태로 변경
+          todo.isCompleted = !todo.isCompleted
+        },
+        save(){
+          localStorage.setItem('todoList', JSON.stringify(this.todoList))    // 저장시에는 키:밸류 형태로 저장 JSON.stringify() 문자열로 바꿔서 저장하셈
+        },
+      },
+      computed: {
+        todoListByStatus(){
+          // 상태값에 따라서 전체를 반환하거나, 미완료된 요소들만 반환하거나, 완료된 요소들만 반환
+          return this.todoList.filter((todo)=>{
+            //얘가 true를 반환하는 애들만 모으는 거...
+            if (this.status === 'inProgress'){  // 진행중인 애들만 보고 싶다.. >> 미완료인 요소들만 모으기
+              return !todo.isCompleted
+            }else if(this.status === 'completed'){
+              return todo.isCompleted
+            }else{  // all
+              return true //모든 요소
+            }
+            localStorage.setItem()
+            localStorage.getItem()
+          })
+        },
+      },
+      // todoList에 뭔가 변화가 있으면 저장하기
+      watch: {
+          // todoList : function(){  // 요소가 추가되거나 삭제되지 않더라도 속성이 변경되어도 저장
+          //   console.log('데이터가 변경되어 저장합니다.')
+          //   this.save()
+          // }
+        todoList : {
+          deep : true,
+          handler : function(){
+            console.log('데이터가 변경되어 저장합니다.')
+            this.save()
+          }
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

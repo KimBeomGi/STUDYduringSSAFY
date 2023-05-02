@@ -80,18 +80,18 @@
       <h1>버튼 클릭하기</h1>
       <section class="buttonArea">
         <div class="buttonRow">
-          <div class="btn">
+          <div class="btn" @click="btn1Clicked" v-bind:class="{selected:btnStatusList[0]}">
             <span class="type">1</span>
           </div>
-          <div class="btn">
+          <div class="btn" @click="btn2Clicked" v-bind:class="{selected:btnStatusList[1]}">
             <span class="type">2</span>
           </div>
         </div>
         <div class="buttonRow">
-          <div class="btn">
+          <div class="btn" @click="btn3Clicked" v-bind:class="{selected:btnStatusList[2]}">
             <span class="type">3</span>
           </div>
-          <div class="btn">
+          <div class="btn" @click="btn4Clicked" v-bind:class="{selected:btnStatusList[3]}">
             <span class="type">4</span>
           </div>
         </div>
@@ -100,17 +100,37 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
       data: {
+        // btn1Status : false,
+        // btn2Status : false,
+        // btn3Status : false,
+        // btn4Status : false,
+        btnStatusList : [false,false,false,false]
+
       },
       methods: {
-        clickSelect(){
-          
-        }
-      }
+        btn1Clicked(){
+          // this.btn1Status = !this.btn1Status
+          // this.btnStatusList[0] = !this.btnStatusList[0]
+          this.$set(this.btnStatusList,0,!this.btnStatusList[0])
+        },
+        btn2Clicked(){
+          // this.btnStatusList[1] = !this.btnStatusList[1]
+          this.$set(this.btnStatusList,1,!this.btnStatusList[1])
+        },
+        btn3Clicked(){
+          // this.btnStatusList[2] = !this.btnStatusList[2]
+          this.$set(this.btnStatusList,2,!this.btnStatusList[2])
+        },
+        btn4Clicked(){
+          // this.btnStatusList[3] = !this.btnStatusList[3]
+          this.$set(this.btnStatusList,3,!this.btnStatusList[3])
+        },
+      },
 
     })
   </script>
