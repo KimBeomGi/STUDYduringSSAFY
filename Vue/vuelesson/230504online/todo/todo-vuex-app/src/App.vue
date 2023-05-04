@@ -1,23 +1,20 @@
 <template>
   <div id="app">
-    <h1>소득세 계산기</h1>
-   <IncomeView/>
+    <TodoList/>
+    <TodoForm/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import IncomeView from '@/components/IncomeView'
+import TodoList from '@/components/TodoList.vue'
+import TodoForm from '@/components/TodoForm.vue'
+
 export default {
   name: 'App',
   components: {
-    // HelloWorld
-    IncomeView
-  },
-  data(){
-    return{
-    }
-  },
+    TodoList,
+    TodoForm,
+  }
 }
 </script>
 

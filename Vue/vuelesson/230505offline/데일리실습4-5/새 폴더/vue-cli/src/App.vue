@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    <h1>소득세 계산기</h1>
-   <IncomeView/>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import IncomeView from '@/components/IncomeView'
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
   components: {
-    // HelloWorld
-    IncomeView
-  },
-  data(){
-    return{
-    }
-  },
+    HelloWorld
+  }
 }
 </script>
 

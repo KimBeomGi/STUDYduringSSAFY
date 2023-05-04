@@ -60,7 +60,11 @@ export default {
       this.calculateTaxAmount()
     }
   },
+  computed :{
+
+  },
   created(){
+    console.log('객체 생성됨!')
     this.calculateTaxAmount()
   },
 }
