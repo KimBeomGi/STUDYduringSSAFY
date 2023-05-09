@@ -9,15 +9,19 @@
 # 출력
 # 각 줄마다 주어진 수가 팰린드롬수면 'yes', 아니면 'no'를 출력한다.
 
+# 입력 받기
 import sys
+A = sys.stdin.readline().strip()        # 문자열로 입력받음
 
-A = sys.stdin.readline().strip()
-while A != '0':
-    B = ''
-    for i in range(len(A)-1,-1,-1):
-        B = B + A[i]
-    if A == B:
-        print('yes')
-    else:
-        print('no')
-    A = sys.stdin.readline().strip()
+# 반복하면서 확인하기
+while A != '0':                         # 입력되는 수가 0이 아닐때까지 반복
+    B = ''                              # B라는 빈문자열 변수를 생성
+    for i in range(len(A)-1,-1,-1):     # 인덱스를 뒤에서부터 확인하는 반복문
+        # A[i]를 B에 계속 이어붙임 12345를 입력받았다면 54321이 되겠지.
+        B = B + A[i]                    
+    # 확인 절차
+    if A == B:                          # A==B 가 되면 
+        print('yes')                    # yes를 출력
+    else:                               # 아니면
+        print('no')                     # no를 출력
+    A = sys.stdin.readline().strip()    # 다음 값 입력받기
