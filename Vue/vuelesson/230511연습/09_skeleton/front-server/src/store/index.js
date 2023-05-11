@@ -16,21 +16,22 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    GET_ARTICLES(state, articles){
+    GET_ARTICLES(state, articles) {
       state.articles = articles
     }
   },
   actions: {
-    getArticles(context){
+    getArticles(context) {
       axios({
         method: 'get',
-        ulr: `${API_URL}/api/v1/articles/`,
+        url: `${API_URL}/api/v1/articles/`,
       })
-      .then((response)=>{
-        context.commit('GET_ARTICLES',response.data)
-      })
-      .catch((error)=>{
-        console.log(error)
+        .then((res) => {
+        // console.log(res, context)
+          context.commit('GET_ARTICLES', res.data)
+        })
+        .catch((err) => {
+        console.log(err)
       })
     }
   },

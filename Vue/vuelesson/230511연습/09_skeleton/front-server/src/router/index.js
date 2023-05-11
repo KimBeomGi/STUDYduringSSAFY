@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ArticleView from '@/views/ArticleView'
 import CreateView from '@/views/CreateView'
-// import DetailView from '@/views/DetailView'
+import DetailView from '@/views/DetailView'
 // import SignUpView from '@/views/SignUpView'
 // import LogInView from '@/views/LogInView'
 
@@ -34,11 +34,11 @@ const routes = [
   //   component: LogInView
   // },
 
-  // {
-  //   path: '/:id',
-  //   name: 'DetailView',
-  //   component: DetailView,
-  // },
+  {
+    path: '/:id',
+    name: 'DetailView',
+    component: DetailView,
+  },
 
 ]
 

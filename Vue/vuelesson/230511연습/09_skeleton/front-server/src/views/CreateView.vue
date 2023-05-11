@@ -3,7 +3,7 @@
 <template>
   <div>
     <h1>게시글 작성</h1>
-    <form>
+    <form @submit.prevent="createArticle">
       <label for="title">제목 : </label>
       <input type="text" id="title" v-model.trim="title"><br>
       <label for="content">내용 : </label>
@@ -14,6 +14,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+const API_URL = 'http://127.0.0.1:8000/'
+
 export default {
   name: 'CreateView',
   data() {
@@ -23,7 +26,30 @@ export default {
     }
   },
   methods: {
-    
+    createArticle() {
+      const title = this.title
+      const content = this.content
+
+      if (!title) {
+        alert('제목 입력해주세요')
+        return
+      } else if (!content){
+        alert('내용 입력해주세요')
+        return
+      }
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/articles/`,
+        data: { title, content},
+      })
+      .then(() => {
+        // console.log(res)
+        this.$router.push({name: 'ArticleView'})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

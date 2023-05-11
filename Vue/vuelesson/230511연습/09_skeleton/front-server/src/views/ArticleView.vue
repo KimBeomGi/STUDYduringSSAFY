@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Article Page</h1>
+    <router-link :to="{name:'CreateView'}">[CREATE]</router-link>
     <ArticleList/>
     <hr>
   </div>
