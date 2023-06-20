@@ -45,3 +45,4 @@ print(answer)
 # for i in range(K, C+1, K):    # 배수는 다 색칠하려고
 #     second[i] = 1
 # print(second)
+
