@@ -10,3 +10,6 @@ for testcase in range(T):
     percent = count/N*100                       # percent를 구하기
 
     print(f'{percent:.3f}%')                    # percent값이 소숫점 3자리가 나오게하기 위해 .3f를 작성
+
+
+    
