@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Momentum</title>
+    <title>Momentum App</title>
 </head>
 <body>
-    <script src="app.js"></script>
+  <form id="login-form" class="hidden">
+    <input 
+      required
+      maxlength="15"
+      type="text" placeholder = "그대의 이름이 무어신교">
+      <input type="submit" value="Log in">
+    <!-- <button>Log In</button> -->
+  </form>
+  <h1 id="greeting" class="hidden"></h1>
+  <!-- <a href="https://nomadcoders.co">Go to courses</a> -->
+  <script src="app.js"></script>
 </body>
 </html>
